@@ -1,12 +1,14 @@
-const { expect } = require('expect');
 const { Ship } = require('./models/shipModel');
-const { ShipHandler } = require('./shipHandler');
+const { Gameboard } = require('./gameboard');
 
-const mockShipHandler = new ShipHandler();
-mockShipHandler.ships = [new Ship(3), new Ship(5)];
+const mockGameboard = new Gameboard();
 
-test('creates a ship with the expected length', () => {
-  expect(mockShipHandler.addShip(5).length).toBe(5);
+test('places a ship with the expected length', () => {
+  mockGameboard.placeShip(5, { start: [0, 0], end: [0, 4] });
+  // change to test ship length
+  expect(mockGameboard.ships[0]).toBe({
+    '[object Object]': { end: [0, 4], start: [0, 0] },
+  });
 });
 
 test('adds ship to handler array', () => {
@@ -22,4 +24,8 @@ test('hitting every part of a ship sinks it', () => {
   mockShipHandler.hitShip(0, 1);
   mockShipHandler.hitShip(0, 2);
   expect(mockShipHandler.sinkShip(0)).toBe(true);
+});
+
+test('place a ship on gameboard', () => {
+  expect(mockShipHandler.hitShip(2, 2)).toBe(true);
 });

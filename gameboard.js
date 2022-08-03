@@ -6,9 +6,19 @@ export class Gameboard {
     this.ships = [];
   }
   placeShip(length, coordinates) {
-    const ship = new Ship(length);
-    // if statement to make sure they don't intersect
-    this.ships.push({ [coordinates]: ship });
-    return ship;
+    // check if coordinates intersect with previously placed ship
+    for (const location of coordinates) {
+      for (const ship of this.ships) {
+        if (
+          ship.coordinates.some(
+            (element) => JSON.stringify(element) === JSON.stringify(location)
+          )
+        ) {
+          return;
+        }
+      }
+    }
+    const ship = new Ship(length, coordinates);
+    this.ships.push(ship);
   }
 }

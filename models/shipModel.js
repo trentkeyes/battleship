@@ -1,6 +1,7 @@
 export class Ship {
-  constructor(length) {
+  constructor(length, coordinates) {
     this.length = length;
+    this.coordinates = coordinates;
     this.hits = [...Array(this.length)];
     this.sunk = false;
   }
@@ -9,7 +10,7 @@ export class Ship {
     return this.hits[part];
   }
   sinkShip() {
-    // run each time hitShip is used to check
+    // run each time hitShip is used to check if sunk
     if (this.hits.every((val) => val === true)) {
       this.sunk = true;
     }

@@ -33,14 +33,33 @@ test('dont place ship if it intersects with another', () => {
 });
 
 test('calling hit registers in hits array', () => {
-  mockGameboard.ships[0].hitShip(2);
-  expect(mockGameboard.ships[0].hits[2]).toBe(true);
+  mockGameboard.ships[0].hitShip([1, 2]);
+  expect(mockGameboard.ships[0].hits[0]).toStrictEqual([1, 2]);
 });
 
 test('hitting every part of a ship sinks it', () => {
-  mockGameboard.ships[0].hitShip(0);
-  mockGameboard.ships[0].hitShip(1);
-  mockGameboard.ships[0].hitShip(2);
+  mockGameboard.ships[0].hitShip([1, 0]);
+  mockGameboard.ships[0].hitShip([1, 1]);
   mockGameboard.ships[0].sinkShip();
   expect(mockGameboard.ships[0].sunk).toBe(true);
+});
+
+test('Receive attack registers a missed shot', () => {
+  mockGameboard.receiveAttack([9, 9]);
+  expect(mockGameboard.missedShots).toStrictEqual([[9, 9]]);
+});
+
+test('Receive attack registers a hit', () => {
+  mockGameboard.receiveAttack([0, 0]);
+  expect(mockGameboard.ships[1].hits).toStrictEqual([[0, 0]]);
+});
+
+test('Receive attack doesnt register same missed shot', () => {
+  mockGameboard.receiveAttack([9, 9]);
+  expect(mockGameboard.missedShots).toStrictEqual([[9, 9]]);
+});
+
+test('Receive attack doesnt register same hit', () => {
+  mockGameboard.receiveAttack([0, 0]);
+  expect(mockGameboard.ships[1].hits).toStrictEqual([[0, 0]]);
 });

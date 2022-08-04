@@ -6,11 +6,9 @@ export class Ship {
     this.sunk = false;
   }
   hitShip(location) {
-    console.log(this.hits);
     this.hits.push(location);
   }
   sinkShip() {
-    // run each time hitShip is used to check if sunk
     if (this.hits.length === this.length) {
       this.sunk = true;
     }

@@ -41,11 +41,15 @@ export class Gameboard {
             JSON.stringify(ship.coordinates[i]) === JSON.stringify(coordinates)
           ) {
             ship.hitShip(coordinates);
+            ship.sinkShip();
             return;
           }
         }
       }
     }
     this.missedShots.push(coordinates);
+  }
+  allSunk() {
+    return this.ships.every((ship) => ship.sunk);
   }
 }

@@ -56,12 +56,16 @@ test('Receive attack registers a hit', () => {
 });
 
 test('Receive attack doesnt register same missed shot', () => {
-  mockGameboard.receiveAttack([9, 9]);
+  if (mockGameboard.validAttack([9, 9])) {
+    mockGameboard.receiveAttack([9, 9]);
+  }
   expect(mockGameboard.missedShots).toStrictEqual([[9, 9]]);
 });
 
 test('Receive attack doesnt register same hit', () => {
-  mockGameboard.receiveAttack([0, 0]);
+  if (mockGameboard.validAttack([0, 0])) {
+    mockGameboard.receiveAttack([0, 0]);
+  }
   expect(mockGameboard.ships[1].hits).toStrictEqual([[0, 0]]);
 });
 

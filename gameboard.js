@@ -1,4 +1,4 @@
-import { Ship } from './models/shipModel';
+import { Ship } from './ship';
 
 export class Gameboard {
   constructor(size) {
@@ -22,7 +22,15 @@ export class Gameboard {
     const ship = new Ship(length, coordinates);
     this.ships.push(ship);
   }
-  receiveAttack(coordinates) {
+  validAttack(coordinates) {
+    if (
+      coordinates[0] < 0 ||
+      coordinates[0] > 9 ||
+      coordinates[1] < 0 ||
+      coordinates[1] > 9
+    ) {
+      return false;
+    }
     // check if missed shot has been made in the same place
     if (
       this.missedShots.some(
@@ -39,15 +47,20 @@ export class Gameboard {
         )
       ) {
         return false;
-      } else {
-        for (let i = 0; i < ship.coordinates.length; i++) {
-          if (
-            JSON.stringify(ship.coordinates[i]) === JSON.stringify(coordinates)
-          ) {
-            ship.hitShip(coordinates);
-            ship.sinkShip();
-            return true;
-          }
+      }
+    }
+    return true;
+  }
+
+  receiveAttack(coordinates) {
+    for (const ship of this.ships) {
+      for (let i = 0; i < ship.coordinates.length; i++) {
+        if (
+          JSON.stringify(ship.coordinates[i]) === JSON.stringify(coordinates)
+        ) {
+          ship.hitShip(coordinates);
+          ship.sinkShip();
+          return true;
         }
       }
     }

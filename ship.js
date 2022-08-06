@@ -11,6 +11,7 @@ export class Ship {
   sinkShip() {
     if (this.hits.length === this.length) {
       this.sunk = true;
+      console.log('Ship sunk!');
     }
   }
 }

@@ -1,4 +1,4 @@
-const { Gameboard } = require('./gameboard');
+const { Gameboard } = require('./Gameboard');
 
 const mockGameboard = new Gameboard();
 const mockGameboard2 = new Gameboard();

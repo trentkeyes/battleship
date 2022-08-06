@@ -1,8 +1,7 @@
-import { Ship } from './ship';
+import { Ship } from './ship.js';
 
 export class Gameboard {
-  constructor(size) {
-    this.size = size;
+  constructor() {
     this.ships = [];
     this.missedShots = [];
   }
@@ -60,11 +59,13 @@ export class Gameboard {
         ) {
           ship.hitShip(coordinates);
           ship.sinkShip();
+          console.log('Hit!');
           return true;
         }
       }
     }
     this.missedShots.push(coordinates);
+    console.log('Miss!');
     return true;
   }
   allSunk() {

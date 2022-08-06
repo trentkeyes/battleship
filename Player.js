@@ -18,7 +18,7 @@ export class HumanPlayer extends Player {
       if (this.enemy.gameboard.validAttack(coordinates)) {
         this.enemy.gameboard.receiveAttack(coordinates);
         this.switchTurn();
-        return coordinates;
+        return true;
       }
       return false;
     }
@@ -35,7 +35,7 @@ export class ComputerPlayer extends Player {
         if (this.enemy.gameboard.validAttack(coordinates)) {
           this.enemy.gameboard.receiveAttack(coordinates);
           this.switchTurn();
-          return coordinates;
+          return true;
         } else {
           tryAttack();
         }

@@ -34,9 +34,7 @@ export class Game {
     ]);
 
     // start taking turns
-
     this.player1.turn = true;
-    console.log(this.player1, this.player2);
     while (this.winner == '') {
       const currentPlayer = () =>
         this.player1.turn ? this.player1 : this.player2;

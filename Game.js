@@ -1,6 +1,6 @@
-import { ComputerPlayer } from './Player.js';
-import { HumanPlayer } from './Player.js';
+import { ComputerPlayer, HumanPlayer } from './Player.js';
 import { Gameboard } from './Gameboard.js';
+// import { events } from './dom/events.js';
 
 export class Game {
   constructor(player1 = 'Player', player2 = 'Computer') {
@@ -12,49 +12,41 @@ export class Game {
     this.turn = 0;
   }
   playGame() {
+    //set up
     this.player1.gameboard = this.gameboard1;
     this.player2.gameboard = this.gameboard2;
     this.player1.enemy = this.player2;
     this.player2.enemy = this.player1;
 
     // place ships
-    this.player1.gameboard.placeShip(5, [
-      [0, 0],
-      [0, 1],
-      [0, 2],
-      [0, 3],
-      [0, 4],
-    ]);
-    this.player2.gameboard.placeShip(5, [
-      [0, 0],
-      [0, 1],
-      [0, 2],
-      [0, 3],
-      [0, 4],
-    ]);
+    this.player1.gameboard.placeShip(5, [0, 1, 2, 3, 4]);
+    this.player1.gameboard.placeShip(4, [20, 21, 22, 23]);
+    this.player1.gameboard.placeShip(3, [50, 51, 52]);
+    this.player1.gameboard.placeShip(3, [97, 98, 99]);
+    this.player1.gameboard.placeShip(2, [56, 46]);
 
-    // start taking turns
+    this.player2.gameboard.placeShip(5, [100, 101, 102, 103, 104]);
+    this.player2.gameboard.placeShip(4, [134, 144, 154, 164]);
+    this.player2.gameboard.placeShip(3, [148, 158, 168]);
+    this.player2.gameboard.placeShip(3, [106, 107, 108]);
+    this.player2.gameboard.placeShip(2, [145, 146]);
+
     this.player1.turn = true;
-    while (this.winner == '') {
-      const currentPlayer = () =>
-        this.player1.turn ? this.player1 : this.player2;
-      console.log(`It's ${currentPlayer().name}'s turn. (${this.turn})`);
-      if (this.gameboard2.allSunk()) {
-        this.winner = this.player1;
-      }
-      if (this.gameboard1.allSunk()) {
-        this.winner = this.player2;
-      }
-      if (this.player1.turn) {
-        this.player1.attack([prompt(), prompt()]);
-        // break out of loop if player 1 wins
-      } else if (this.player2.turn) {
-        this.player2.attack();
-      }
-      console.log(this.gameboard1, this.gameboard2);
-      this.turn++;
+  }
+  playRound(zone) {
+    this.player1.attack(zone);
+    if (this.gameboard2.allSunk()) {
+      this.winner = this.player1;
+      console.log(`${this.winner.name} won the game!`);
+      return;
     }
-
-    console.log(`${this.winner.name} won the game!`);
+    const compAttack = () => this.player2.attack();
+    setTimeout(compAttack, 1000);
+    if (this.gameboard1.allSunk()) {
+      this.winner = this.player2;
+      console.log(`${this.winner.name} won the game!`);
+      return;
+    }
+    this.turn++;
   }
 }

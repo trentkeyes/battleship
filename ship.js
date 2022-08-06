@@ -1,12 +1,12 @@
 export class Ship {
-  constructor(length, coordinates) {
+  constructor(length, zones) {
     this.length = length;
-    this.coordinates = coordinates;
+    this.zones = zones;
     this.hits = [];
     this.sunk = false;
   }
-  hitShip(location) {
-    this.hits.push(location);
+  hitShip(zone) {
+    this.hits.push(zone);
   }
   sinkShip() {
     if (this.hits.length === this.length) {

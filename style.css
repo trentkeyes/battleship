@@ -5,6 +5,8 @@
 body {
     margin: 0;
     padding: 0;
+    background-image: url("./images/ant-rozetsky-q-DJ9XhKkhA-unsplash.jpg");
+    background-size: cover;
 }
 
 .container {
@@ -28,14 +30,33 @@ body {
 .gameboard1, .gameboard2 {
     display: flex;
     flex-flow: row wrap;
-    background-color: blue;
-    padding: 10px;
+    justify-content: center;
+    align-items: center;
+    width: 400px;
 }
 
 .zone {
-    background-color: aquamarine;
-    width: 20px;
-    height: 20px;
-    border: 1px solid black;
+    background-color: rgb(10, 43, 100);
+    width: 39px;
+    height: 39px;
+    border: 1px solid rgb(142, 167, 207);
+}
 
+.zone:hover {
+    background-color: red;
+    cursor: crosshair;
+}
+
+.ship {
+    background-color: black;
+}
+
+.hit {
+    background-color: red;
+    background-image: url('/images/close_FILL0_wght400_GRAD0_opsz48.svg');
+    background-position: center;
+}
+
+.miss {
+    background-color: green;
 }

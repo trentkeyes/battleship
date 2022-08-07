@@ -32,14 +32,48 @@ export class ComputerPlayer extends Player {
       (ship) => !ship.sunk && ship.hits.length > 0
     );
     const smartTarget = () => {
+      // if last digit is 0, 9, 0-9, 90-99, 100-109, 190-199
       const successfulHits = damagedShips[0].hits.sort((a, b) => a - b);
+      let targetOptions;
+      // 'edge' cases only have three target options
       if (successfulHits.length === 1) {
-        const targetOptions = [
-          successfulHits[0] + 1,
-          successfulHits[0] - 1,
-          successfulHits[0] + 10,
-          successfulHits[0] - 10,
-        ];
+        switch (true) {
+          case successfulHits[0] <= 9:
+            targetOptions = [
+              successfulHits[0] + 1,
+              successfulHits[0] - 1,
+              successfulHits[0] + 10,
+            ];
+            break;
+          case successfulHits[0] >= 90:
+            targetOptions = [
+              successfulHits[0] + 1,
+              successfulHits[0] - 1,
+              successfulHits[0] - 10,
+            ];
+            break;
+          case String(successfulHits[0]).charAt(str.length - 1) == '0':
+            targetOptions = [
+              successfulHits[0] + 1,
+              successfulHits[0] + 10,
+              successfulHits[0] - 10,
+            ];
+            break;
+          case String(successfulHits[0]).charAt(str.length - 1) == '9':
+            targetOptions = [
+              successfulHits[0] - 1,
+              successfulHits[0] + 10,
+              successfulHits[0] - 10,
+            ];
+            break;
+          default:
+            targetOptions = [
+              successfulHits[0] + 1,
+              successfulHits[0] - 1,
+              successfulHits[0] + 10,
+              successfulHits[0] - 10,
+            ];
+        }
         const target =
           targetOptions[Math.floor(Math.random() * targetOptions.length)];
         return target;
@@ -48,10 +82,28 @@ export class ComputerPlayer extends Player {
         const firstHit = successfulHits[0];
         const lastHit = successfulHits[successfulHits.length - 1];
         let targetOptions;
+        if (firstHit <= 9) {
+          targetOptions = lastHit + 10;
+        }
+
         if (lastHit - firstHit < 10) {
-          targetOptions = [firstHit - 1, lastHit + 1];
+          // ship is horizontal
+          if (String(firstHit).charAt(str.length - 1) == '0') {
+            targetOptions = [lastHit + 1];
+          } else if (String(lastHit).charAt(str.length - 1) == '9') {
+            targetOptions = [firstHit - 1];
+          } else {
+            targetOptions = [firstHit - 1, lastHit + 1];
+          }
         } else if (lastHit - firstHit >= 10) {
-          targetOptions = [firstHit - 10, lastHit + 10];
+          // ship is vertical
+          if (firstHit <= 9) {
+            targetOptions = [lastHit + 10];
+          } else if (lastHit >= 90) {
+            targetOptions = [firstHit - 10];
+          } else {
+            targetOptions = [firstHit - 10, lastHit + 10];
+          }
         }
         const target =
           targetOptions[Math.floor(Math.random() * targetOptions.length)];

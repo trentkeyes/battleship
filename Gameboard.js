@@ -18,6 +18,7 @@ export class Gameboard {
     const ship = new Ship(length, zones);
     this.ships.push(ship);
     render.renderShip(zones);
+    console.log(this.ships);
   }
   validAttack(board, zone) {
     if (board === 1) {

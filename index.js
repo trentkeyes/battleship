@@ -40,21 +40,15 @@ let shipOrientation;
 // find which part of the ship being dragged
 ship.addEventListener('mousedown', (e) => {
   shipLength = e.target.parentNode.children.length;
-  shipPart = Array.prototype.indexOf.call(
-    e.target.parentNode.children,
-    e.target
-  );
+  shipPart = Array.from(e.target.parentNode.children).indexOf(e.target);
 });
 
-// this basic structure is from mdn drop article
 document.addEventListener('drop', (e) => {
   e.preventDefault();
   if (
     e.target.classList.contains('zone') &&
     e.target.parentNode.classList.contains('gameboard1')
   ) {
-    ship.parentNode.removeChild(ship);
-
     //if ship is vertical...
     const zoneBelow1 = document.getElementById(`${Number(e.target.id) + 10}`);
     const zoneBelow2 = document.getElementById(`${Number(e.target.id) + 20}`);
@@ -67,41 +61,227 @@ document.addEventListener('drop', (e) => {
     const zoneAbove4 = document.getElementById(`${Number(e.target.id) - 40}`);
     const zoneAbove5 = document.getElementById(`${Number(e.target.id) - 50}`);
     const zonesAbove = [zoneAbove1, zoneAbove2, zoneAbove3, zoneAbove4];
-
-    if (shipPart === 0) {
-      e.target.classList.add('ship');
-      for (let i = 0; i < shipLength - 1; i++) {
-        zonesBelow[i].classList.add('ship');
+    if (shipLength === 5) {
+      if (shipPart === 0) {
+        if (
+          !e.target.classList.contains('ship') &&
+          !zoneBelow1.classList.contains('ship') &&
+          !zoneBelow2.classList.contains('ship') &&
+          !zoneBelow3.classList.contains('ship') &&
+          !zoneBelow4.classList.contains('ship')
+        ) {
+          game.gameboard1.placeShip(shipLength, [
+            e.target.id,
+            zoneBelow1.id,
+            zoneBelow2.id,
+            zoneBelow3.id,
+            zoneBelow4.id,
+          ]);
+          ship.parentNode.removeChild(ship);
+        }
+      }
+      if (shipPart === 1) {
+        if (
+          !zoneAbove1.classList.contains('ship') &&
+          !e.target.classList.contains('ship') &&
+          !zoneBelow1.classList.contains('ship') &&
+          !zoneBelow2.classList.contains('ship') &&
+          !zoneBelow3.classList.contains('ship')
+        ) {
+          game.gameboard1.placeShip(shipLength, [
+            zoneAbove1.id,
+            e.target.id,
+            zoneBelow1.id,
+            zoneBelow2.id,
+            zoneBelow3.id,
+          ]);
+          ship.parentNode.removeChild(ship);
+        }
+      }
+      if (shipPart === 2) {
+        if (
+          !zoneAbove2.classList.contains('ship') &&
+          !zoneAbove1.classList.contains('ship') &&
+          !e.target.classList.contains('ship') &&
+          !zoneBelow1.classList.contains('ship') &&
+          !zoneBelow2.classList.contains('ship')
+        ) {
+          game.gameboard1.placeShip(shipLength, [
+            zoneAbove2.id,
+            zoneAbove1.id,
+            e.target.id,
+            zoneBelow1.id,
+            zoneBelow2.id,
+          ]);
+          ship.parentNode.removeChild(ship);
+        }
+      }
+      if (shipPart === 3) {
+        if (
+          !zoneAbove1.classList.contains('ship') &&
+          !zoneAbove2.classList.contains('ship') &&
+          !zoneAbove3.classList.contains('ship') &&
+          !zoneBelow1.classList.contains('ship') &&
+          !e.target.classList.contains('ship')
+        ) {
+          game.gameboard1.placeShip(shipLength, [
+            zoneAbove3.id,
+            zoneAbove2.id,
+            zoneAbove1.id,
+            e.target.id,
+            zoneBelow1.id,
+          ]);
+          ship.parentNode.removeChild(ship);
+        }
+      }
+      if (shipPart === 4) {
+        if (
+          !zoneAbove1.classList.contains('ship') &&
+          !zoneAbove2.classList.contains('ship') &&
+          !zoneAbove3.classList.contains('ship') &&
+          !zoneAbove4.classList.contains('ship') &&
+          !e.target.classList.contains('ship')
+        ) {
+          game.gameboard1.placeShip(shipLength, [
+            zoneAbove4.id,
+            zoneAbove3.id,
+            zoneAbove2.id,
+            zoneAbove1.id,
+            e.target.id,
+          ]);
+          ship.parentNode.removeChild(ship);
+        }
       }
     }
-    if (shipPart === 1) {
-      e.target.classList.add('ship');
-      zoneAbove1.classList.add('ship');
-      for (let i = 0; i < shipLength - 2; i++) {
-        zonesBelow[i].classList.add('ship');
+    if (shipLength === 4) {
+      if (shipPart === 0) {
+        if (
+          !e.target.classList.contains('ship') &&
+          !zoneBelow1.classList.contains('ship') &&
+          !zoneBelow2.classList.contains('ship') &&
+          !zoneBelow3.classList.contains('ship')
+        ) {
+          game.gameboard1.placeShip(shipLength, [
+            e.target.id,
+            zoneBelow1.id,
+            zoneBelow2.id,
+            zoneBelow3.id,
+          ]);
+          ship.parentNode.removeChild(ship);
+        }
+      }
+      if (shipPart === 1) {
+        if (
+          !zoneAbove1.classList.contains('ship') &&
+          !e.target.classList.contains('ship') &&
+          !zoneBelow1.classList.contains('ship') &&
+          !zoneBelow2.classList.contains('ship')
+        ) {
+          game.gameboard1.placeShip(shipLength, [
+            zoneAbove1.id,
+            e.target.id,
+            zoneBelow1.id,
+            zoneBelow2.id,
+          ]);
+          ship.parentNode.removeChild(ship);
+        }
+      }
+      if (shipPart === 2) {
+        if (
+          !zoneAbove2.classList.contains('ship') &&
+          !zoneAbove1.classList.contains('ship') &&
+          !e.target.classList.contains('ship') &&
+          !zoneBelow1.classList.contains('ship')
+        ) {
+          game.gameboard1.placeShip(shipLength, [
+            zoneAbove2.id,
+            zoneAbove1.id,
+            e.target.id,
+            zoneBelow1.id,
+          ]);
+          ship.parentNode.removeChild(ship);
+        }
+      }
+      if (shipPart === 3) {
+        if (
+          !zoneAbove3.classList.contains('ship') &&
+          !zoneAbove2.classList.contains('ship') &&
+          !zoneAbove1.classList.contains('ship') &&
+          !e.target.classList.contains('ship')
+        ) {
+          game.gameboard1.placeShip(shipLength, [
+            zoneAbove3.id,
+            zoneAbove2.id,
+            zoneAbove1.id,
+            e.target.id,
+          ]);
+          ship.parentNode.removeChild(ship);
+        }
       }
     }
-    if (shipPart === 2) {
-      e.target.classList.add('ship');
-      zoneAbove1.classList.add('ship');
-      zoneAbove2.classList.add('ship');
-      for (let i = 0; i < shipLength - 3; i++) {
-        zonesBelow[i].classList.add('ship');
+    if (shipLength === 3) {
+      if (shipPart === 0) {
+        if (
+          !e.target.classList.contains('ship') &&
+          !zoneBelow1.classList.contains('ship') &&
+          !zoneBelow2.classList.contains('ship')
+        ) {
+          game.gameboard1.placeShip(shipLength, [
+            e.target.id,
+            zoneBelow1.id,
+            zoneBelow2.id,
+          ]);
+          ship.parentNode.removeChild(ship);
+        }
+      }
+      if (shipPart === 1) {
+        if (
+          !zoneAbove1.classList.contains('ship') &&
+          !e.target.classList.contains('ship') &&
+          !zoneBelow1.classList.contains('ship')
+        ) {
+          game.gameboard1.placeShip(shipLength, [
+            zoneAbove1.id,
+            e.target.id,
+            zoneBelow1.id,
+          ]);
+          ship.parentNode.removeChild(ship);
+        }
+      }
+      if (shipPart === 2) {
+        if (
+          !zoneAbove2.classList.contains('ship') &&
+          !zoneAbove1.classList.contains('ship') &&
+          !e.target.classList.contains('ship')
+        ) {
+          game.gameboard1.placeShip(shipLength, [
+            zoneAbove2.id,
+            zoneAbove1.id,
+            e.target.id,
+          ]);
+          ship.parentNode.removeChild(ship);
+        }
       }
     }
-    if (shipPart === 3) {
-      e.target.classList.add('ship');
-      zoneAbove1.classList.add('ship');
-      zoneAbove2.classList.add('ship');
-      zoneAbove3.classList.add('ship');
-      zoneBelow1.classList.add('ship');
-    }
-    if (shipPart === 4) {
-      e.target.classList.add('ship');
-      zoneAbove1.classList.add('ship');
-      zoneAbove2.classList.add('ship');
-      zoneAbove3.classList.add('ship');
-      zoneAbove4.classList.add('ship');
+    if (shipLength === 2) {
+      if (shipPart === 0) {
+        if (
+          !e.target.classList.contains('ship') &&
+          !zoneBelow1.classList.contains('ship')
+        ) {
+          game.gameboard1.placeShip(shipLength, [e.target.id, zoneBelow1.id]);
+          ship.parentNode.removeChild(ship);
+        }
+      }
+      if (shipPart === 1) {
+        if (
+          !zoneAbove1.classList.contains('ship') &&
+          !e.target.classList.contains('ship')
+        ) {
+          game.gameboard1.placeShip(shipLength, [zoneAbove1.id, e.target.id]);
+          ship.parentNode.removeChild(ship);
+        }
+      }
     }
   }
 });

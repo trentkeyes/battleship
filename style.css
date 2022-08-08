@@ -12,7 +12,7 @@ body {
 .container {
     display: grid;
     grid-template-areas: 
-    "gameboard1 gameboard2";
+    "shipBank gameboard1 gameboard2";
     height: 100vh;
     width: 100%;
     justify-items: center;
@@ -59,4 +59,31 @@ body {
 
 .miss {
     background-color: green;
+}
+
+.shipBank {
+    grid-area: shipBank;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.draggableShip {
+    display: flex;
+    flex-direction: row;
+    cursor: move;
+}
+
+.draggableShip > div {
+    width: 39px;
+    height: 39px;
+    background-color: black;
+}
+
+.verticalShip {
+    flex-direction: column;
+}
+
+.dragging {
+    opacity: .5;
 }

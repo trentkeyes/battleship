@@ -52,14 +52,18 @@ export class ComputerPlayer extends Player {
               successfulHits[0] - 10,
             ];
             break;
-          case String(successfulHits[0]).charAt(str.length - 1) == '0':
+          case String(successfulHits[0]).charAt(
+            String(successfulHits[0]).length - 1
+          ) == '0':
             targetOptions = [
               successfulHits[0] + 1,
               successfulHits[0] + 10,
               successfulHits[0] - 10,
             ];
             break;
-          case String(successfulHits[0]).charAt(str.length - 1) == '9':
+          case String(successfulHits[0]).charAt(
+            String(successfulHits[0]).length - 1
+          ) == '9':
             targetOptions = [
               successfulHits[0] - 1,
               successfulHits[0] + 10,
@@ -88,9 +92,11 @@ export class ComputerPlayer extends Player {
 
         if (lastHit - firstHit < 10) {
           // ship is horizontal
-          if (String(firstHit).charAt(str.length - 1) == '0') {
+          if (String(firstHit).charAt(String(firstHit).length - 1) == '0') {
             targetOptions = [lastHit + 1];
-          } else if (String(lastHit).charAt(str.length - 1) == '9') {
+          } else if (
+            String(lastHit).charAt(String(lastHit).length - 1) == '9'
+          ) {
             targetOptions = [firstHit - 1];
           } else {
             targetOptions = [firstHit - 1, lastHit + 1];

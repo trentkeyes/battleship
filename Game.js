@@ -1,6 +1,6 @@
 import { ComputerPlayer, HumanPlayer } from './Player.js';
 import { Gameboard } from './Gameboard.js';
-// import { events } from './dom/events.js';
+import { events } from './dom/events.js';
 
 export class Game {
   constructor(player1 = 'Player', player2 = 'Computer') {
@@ -8,10 +8,11 @@ export class Game {
     this.player2 = new ComputerPlayer(player2);
     this.gameboard1 = new Gameboard();
     this.gameboard2 = new Gameboard();
+    this.gameOver = false;
     this.winner = '';
     this.turn = 0;
   }
-  playGame() {
+  setUpGame() {
     //set up
     this.player1.gameboard = this.gameboard1;
     this.player2.gameboard = this.gameboard2;
@@ -34,19 +35,24 @@ export class Game {
     this.player1.turn = true;
   }
   playRound(zone) {
-    this.player1.attack(zone);
-    if (this.gameboard2.allSunk()) {
-      this.winner = this.player1;
-      console.log(`${this.winner.name} won the game!`);
-      return;
+    if (!this.gameOver) {
+      this.player1.attack(zone);
+      if (this.gameboard2.allSunk()) {
+        this.winner = this.player1;
+        this.gameOver = true;
+        console.log(`${this.winner.name} won the game!`);
+        return;
+      }
+      const compAttack = () => {
+        this.player2.attack();
+        if (this.gameboard1.allSunk()) {
+          this.winner = this.player2;
+          this.gameOver = true;
+          console.log(`${this.winner.name} won the game!`);
+          return;
+        }
+      };
+      setTimeout(compAttack, 500);
     }
-    const compAttack = () => this.player2.attack();
-    setTimeout(compAttack, 1000);
-    if (this.gameboard1.allSunk()) {
-      this.winner = this.player2;
-      console.log(`${this.winner.name} won the game!`);
-      return;
-    }
-    this.turn++;
   }
 }

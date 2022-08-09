@@ -29,6 +29,7 @@ export class Gameboard {
     this.ships.push(ship);
 
     render.renderShip(zones);
+
     this.shipToPlaceIndex++;
     console.log(this.shipToPlaceIndex);
     if (this.shipToPlaceIndex <= 4) {
@@ -45,6 +46,12 @@ export class Gameboard {
   //   render.lastShipPlaced();
   //   game.player1.turn = true;
   // }
+  computerPlaceShip(length, zones) {
+   
+    
+    const ship = new Ship(length, zones);
+    this.ships.push(ship);
+  }
 
   validAttack(board, zone) {
     if (board === 1) {

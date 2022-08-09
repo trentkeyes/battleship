@@ -138,4 +138,52 @@ export class ComputerPlayer extends Player {
       return false;
     }
   }
+  randomShips(board) {
+    const shipZones = [];
+    const getRandomInt = (min, max) => {
+      min = Math.ceil(min);
+      max = Math.floor(max);
+      return Math.floor(Math.random() * (max - min) + min);
+    };
+    const buildShip = (size) => {
+      const zones = [];
+      const orientation = getRandomInt(0, 2);
+      let startingVal = getRandomInt(100, 200);
+      zones.push(startingVal);
+      for (let i = 1; i < size; i++) {
+        if (orientation === 0) {
+          startingVal = startingVal + 10;
+          // build vertically
+          zones.push(startingVal);
+        }
+        if (orientation === 1) {
+          startingVal = startingVal + 1;
+          //  build horizontally
+          zones.push(startingVal);
+        }
+      }
+      // check if generated ship doesnt intersect with other ships or goes outside border
+      for (const zone of zones) {
+        if (shipZones.some((element) => element === zone) || zone >= 200) {
+          // use different coordinates
+          buildShip(size);
+          return;
+        }
+      }
+      for (let i = 0; i < size; i++) {
+        shipZones.push(zones[i]);
+      }
+      return zones;
+    };
+    const carrier = buildShip(5);
+    const battleship = buildShip(4);
+    const cruiser = buildShip(3);
+    const sub = buildShip(3);
+    const destroyer = buildShip(2);
+    board.computerPlaceShip(5, carrier);
+    board.computerPlaceShip(4, battleship);
+    board.computerPlaceShip(3, cruiser);
+    board.computerPlaceShip(3, sub);
+    board.computerPlaceShip(2, destroyer);
+  }
 }

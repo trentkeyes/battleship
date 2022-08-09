@@ -55,26 +55,3 @@ document.addEventListener('dragover', (event) => {
 
 const shipBank = document.querySelector('.shipBank');
 shipBank.classList.toggle('hidden');
-
-// The enemy is preparing their attack! It's up to you to command your fleet, obliterate the enemy, and save the world!
-
-// To begin, place your carrier.
-
-// Place your battleship.
-
-// Place your submarine.
-
-// You didn't start this war, but you're starting the battle. Take a shot!
-
-// place ships to start the game. Investigate drag and drop
-
-// add button to change ship orientation (add or remove verticalShip class)
-
-// let users input name
-
-// declare hits, misses, sunk ships, and winner
-
-// get rid of middle borders on ship styling
-
-// could make smart targeting even smarter, so it doesn't target places where non-sunk ships couldn't fit
-

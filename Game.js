@@ -19,7 +19,9 @@ export class Game {
     this.player2.gameboard = this.gameboard2;
     this.player1.enemy = this.player2;
     this.player2.enemy = this.player1;
+    this.player2.randomShips(this.gameboard2);
 
+    console.log(this.gameboard2.ships);
     // run intro messages
 
     // user places carrier, then next ship...

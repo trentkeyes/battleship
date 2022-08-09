@@ -1,10 +1,20 @@
+import { dragAndDrop } from './index.js';
 import { render } from './dom/render.js';
+import { game } from './index.js';
 import { Ship } from './ship.js';
 
 export class Gameboard {
   constructor() {
     this.ships = [];
     this.missedShots = [];
+    this.shipToPlace = [
+      'carrier',
+      'battleship',
+      'cruiser',
+      'submarine',
+      'destroyer',
+    ];
+    this.shipToPlaceIndex = 0;
   }
   placeShip(length, zones) {
     // check if zones intersect with previously placed ship
@@ -17,9 +27,25 @@ export class Gameboard {
     }
     const ship = new Ship(length, zones);
     this.ships.push(ship);
+
     render.renderShip(zones);
-    console.log(this.ships);
+    this.shipToPlaceIndex++;
+    console.log(this.shipToPlaceIndex);
+    if (this.shipToPlaceIndex <= 4) {
+      render.nextShipToPlace(
+        this.shipToPlace[this.shipToPlaceIndex - 1],
+        this.shipToPlace[this.shipToPlaceIndex]
+      );
+    }
+    if (this.shipToPlaceIndex === 5) {
+      render.lastShipPlaced();
+    }
   }
+  // if (this.shipToPlaceIndex === 4) {
+  //   render.lastShipPlaced();
+  //   game.player1.turn = true;
+  // }
+
   validAttack(board, zone) {
     if (board === 1) {
       if (zone < 0 || zone > 99) {

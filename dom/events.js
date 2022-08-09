@@ -6,6 +6,8 @@ export const events = () => {
     game.playRound(e.target.id);
   };
   zones.forEach((element) => element.addEventListener('click', attack));
+
+
 };
 
 // export player attack

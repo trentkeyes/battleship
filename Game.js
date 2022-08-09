@@ -1,6 +1,7 @@
 import { ComputerPlayer, HumanPlayer } from './Player.js';
 import { Gameboard } from './Gameboard.js';
 import { events } from './dom/events.js';
+import { dragAndDrop } from './index.js';
 
 export class Game {
   constructor(player1 = 'Player', player2 = 'Computer') {
@@ -19,18 +20,21 @@ export class Game {
     this.player1.enemy = this.player2;
     this.player2.enemy = this.player1;
 
-    // place ships
-    this.player1.gameboard.placeShip(5, [0, 1, 2, 3, 4]);
-    this.player1.gameboard.placeShip(4, [20, 21, 22, 23]);
-    this.player1.gameboard.placeShip(3, [50, 51, 52]);
-    this.player1.gameboard.placeShip(3, [97, 98, 99]);
-    this.player1.gameboard.placeShip(2, [56, 46]);
+    // run intro messages
 
-    this.player2.gameboard.placeShip(5, [100, 101, 102, 103, 104]);
-    this.player2.gameboard.placeShip(4, [134, 144, 154, 164]);
-    this.player2.gameboard.placeShip(3, [148, 158, 168]);
-    this.player2.gameboard.placeShip(3, [106, 107, 108]);
-    this.player2.gameboard.placeShip(2, [145, 146]);
+    // user places carrier, then next ship...
+
+    // this.player1.gameboard.placeShip(5, [0, 1, 2, 3, 4]);
+    // this.player1.gameboard.placeShip(4, [20, 21, 22, 23]);
+    // this.player1.gameboard.placeShip(3, [50, 51, 52]);
+    // this.player1.gameboard.placeShip(3, [97, 98, 99]);
+    // this.player1.gameboard.placeShip(2, [56, 46]);
+
+    // this.player2.gameboard.placeShip(5, [100, 101, 102, 103, 104]);
+    // this.player2.gameboard.placeShip(4, [134, 144, 154, 164]);
+    // this.player2.gameboard.placeShip(3, [148, 158, 168]);
+    // this.player2.gameboard.placeShip(3, [106, 107, 108]);
+    // this.player2.gameboard.placeShip(2, [145, 146]);
 
     this.player1.turn = true;
   }

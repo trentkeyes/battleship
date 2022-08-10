@@ -146,34 +146,41 @@ export class ComputerPlayer extends Player {
       return Math.floor(Math.random() * (max - min) + min);
     };
     const buildShip = (size) => {
-      const zones = [];
-      const orientation = getRandomInt(0, 2);
-      let startingVal = getRandomInt(100, 200);
-      zones.push(startingVal);
-      for (let i = 1; i < size; i++) {
-        if (orientation === 0) {
-          startingVal = startingVal + 10;
-          // build vertically
-          zones.push(startingVal);
+      const generateZones = (size) => {
+        let zones = [];
+        const orientation = getRandomInt(0, 2);
+        let startingVal = getRandomInt(100, 200);
+        zones.push(startingVal);
+        let i = 1;
+        while (i < size) {
+          if (orientation === 0) {
+            startingVal = startingVal + 10;
+            // build vertically
+            zones.push(startingVal);
+          }
+          if (orientation === 1) {
+            startingVal = startingVal + 1;
+            //  build horizontally
+            zones.push(startingVal);
+          }
+          i++;
         }
-        if (orientation === 1) {
-          startingVal = startingVal + 1;
-          //  build horizontally
-          zones.push(startingVal);
-        }
-      }
+        return zones;
+      };
       // check if generated ship doesnt intersect with other ships or goes outside border
-      for (const zone of zones) {
-        if (shipZones.some((element) => element === zone) || zone >= 200) {
-          // use different coordinates
-          buildShip(size);
-          return;
+      let goodShip = false;
+      while (!goodShip) {
+        let zones = generateZones(size);
+        for (const zone of zones) {
+          if (shipZones.some((element) => element === zone) || zone >= 200) {
+            // try again with different coordinates
+            continue;
+          } else {
+            shipZones.concat(zones);
+            return zones;
+          }
         }
       }
-      for (let i = 0; i < size; i++) {
-        shipZones.push(zones[i]);
-      }
-      return zones;
     };
     const carrier = buildShip(5);
     const battleship = buildShip(4);

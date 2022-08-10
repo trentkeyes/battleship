@@ -31,7 +31,6 @@ export class Gameboard {
     render.renderShip(zones);
 
     this.shipToPlaceIndex++;
-    console.log(this.shipToPlaceIndex);
     if (this.shipToPlaceIndex <= 4) {
       render.nextShipToPlace(
         this.shipToPlace[this.shipToPlaceIndex - 1],
@@ -41,14 +40,14 @@ export class Gameboard {
     if (this.shipToPlaceIndex === 5) {
       render.lastShipPlaced();
     }
+    console.log(this.ships);
   }
   // if (this.shipToPlaceIndex === 4) {
   //   render.lastShipPlaced();
   //   game.player1.turn = true;
   // }
+
   computerPlaceShip(length, zones) {
-   
-    
     const ship = new Ship(length, zones);
     this.ships.push(ship);
   }
@@ -77,19 +76,21 @@ export class Gameboard {
     return true;
   }
 
-  receiveAttack(zone) {
+  receiveAttack(target) {
     for (const ship of this.ships) {
-      for (let i = 0; i < ship.zones.length; i++) {
-        if (ship.zones[i] === zone) {
-          ship.hitShip(zone);
-          ship.sinkShip();
-          render.renderHit(zone);
-          return true;
-        }
+      const hit = ship.zones.filter((zone) => zone === target);
+
+      if (hit.length === 1) {
+        ship.hitShip(target);
+        ship.sinkShip();
+        render.renderHit(target);
+        console.log('successful shot');
+        return true;
       }
     }
-    this.missedShots.push(zone);
-    render.renderMiss(zone);
+    this.missedShots.push(target);
+    console.log('missed shot', this.missedShots);
+    render.renderMiss(target);
     return true;
   }
   allSunk() {

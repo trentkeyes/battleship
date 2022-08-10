@@ -44,11 +44,6 @@ draggableShip.forEach((element) => {
   });
 });
 
-// doesn't seem to be needed
-// board.addEventListener('drop', (e) => {
-//   e.preventDefault();
-// });
-
 document.addEventListener('dragover', (event) => {
   event.preventDefault();
 });

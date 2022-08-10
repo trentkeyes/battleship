@@ -7,8 +7,6 @@ export class Ship {
   }
   hitShip(zone) {
     this.hits.push(zone);
-  }
-  sinkShip() {
     if (this.hits.length === this.length) {
       this.sunk = true;
       console.log('Ship sunk!');

@@ -124,21 +124,29 @@ h1 {
 }
 
 .miss {
-    background-color: green;
+    background-color: rgb(220, 220, 220);
+    ;
 }
 
 .shipBank {
     grid-area: shipBank;
     display: flex;
+    height: 100%;
     flex-direction: column;
-    padding: 0px 5px;
+    align-items: center;
+    justify-content: flex-start;
+    padding-right: 10px;
     border-radius: 5px;
+    gap: 10px;
+
+
 }
 
 .draggableShip {
     display: flex;
     flex-direction: row;
     cursor: move;
+    overflow: hidden;
 }
 
 .draggableShip>div {
@@ -147,12 +155,42 @@ h1 {
     background-color: black;
 }
 
+/* .draggableShip.verticalShip>div:first-child {
+    border-top-left-radius: 50%;
+    border-top-right-radius: 50%;
+}
+
+.draggableShip.verticalShip>div:last-child {
+    border-bottom-left-radius: 50%;
+    border-bottom-right-radius: 50%;
+}
+
+.draggableShip.horizontalShip>div:first-child {
+    border-top-left-radius: 50%;
+    border-top-right-radius: 50%;
+}
+
+.draggableShip.horizontalShip>div:last-child {
+    border-bottom-left-radius: 50%;
+    border-bottom-right-radius: 50%;
+} */
+
+
 .verticalShip {
     flex-direction: column;
 }
 
+.horizontalShip {
+    flex-direction: row;
+}
+
 .dragging {
-    opacity: .5;
+    opacity: 1;
+}
+
+.rotateShip {
+    font-family: inherit;
+
 }
 
 .hidden {

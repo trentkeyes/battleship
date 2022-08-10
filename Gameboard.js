@@ -41,10 +41,6 @@ export class Gameboard {
       render.lastShipPlaced();
     }
   }
-  // if (this.shipToPlaceIndex === 4) {
-  //   render.lastShipPlaced();
-  //   game.player1.turn = true;
-  // }
 
   computerPlaceShip(length, zones) {
     const ship = new Ship(length, zones);

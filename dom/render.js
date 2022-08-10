@@ -6,12 +6,13 @@ export const render = (() => {
   const renderShip = (zones) => {
     for (let i = 0; i < zones.length; i++) {
       const zone = document.getElementById(zones[i]);
-      if (i === 0) {
-        zone.classList.add('shipFront');
-      }
-      if (i === zones.length - 1) {
-        zone.classList.add('shipBack');
-      }
+      // optionally add rounded ends to ship on placement
+      // if (i === 0) {
+      //   zone.classList.add('shipFront');
+      // }
+      // if (i === zones.length - 1) {
+      //   zone.classList.add('shipBack');
+      // }
       zone.classList.add('ship');
     }
   };

@@ -40,7 +40,6 @@ export class Gameboard {
     if (this.shipToPlaceIndex === 5) {
       render.lastShipPlaced();
     }
-    console.log(this.ships);
   }
   // if (this.shipToPlaceIndex === 4) {
   //   render.lastShipPlaced();

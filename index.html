@@ -9,243 +9,254 @@
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/x-icon" href="/images/Tfavicon.ico">
     <link rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap" rel="stylesheet">
 </head>
 
 <body>
     <div id="container" class="container">
-        <div class="shipBank hidden">
-            <div class="carrier draggableShip verticalShip" draggable="true">
-                <div class="shipBlock"></div>
-                <div class="shipBlock"></div>
-                <div class="shipBlock"></div>
-                <div class="shipBlock"></div>
-                <div class="shipBlock"></div>
+        <h1 class="title">BATTLESHIP</h1>
+        <div class="player1Container">
+            <div class="shipBank hidden">
+                <div class="carrier draggableShip verticalShip" draggable="true">
+                    <div class="shipBlock"></div>
+                    <div class="shipBlock"></div>
+                    <div class="shipBlock"></div>
+                    <div class="shipBlock"></div>
+                    <div class="shipBlock"></div>
+                </div>
+                <div class="battleship draggableShip verticalShip" draggable="true">
+                    <div class="shipBlock"></div>
+                    <div class="shipBlock"></div>
+                    <div class="shipBlock"></div>
+                    <div class="shipBlock"></div>
+                </div>
+                <div class="cruiser draggableShip verticalShip" draggable="true">
+                    <div class="shipBlock"></div>
+                    <div class="shipBlock"></div>
+                    <div class="shipBlock"></div>
+                </div>
+                <div class="submarine draggableShip verticalShip" draggable="true">
+                    <div class="shipBlock"></div>
+                    <div class="shipBlock"></div>
+                    <div class="shipBlock"></div>
+                </div>
+                <div class="destroyer draggableShip verticalShip" draggable="true">
+                    <div class="shipBlock"></div>
+                    <div class="shipBlock"></div>
+                </div>
             </div>
-            <div class="battleship draggableShip verticalShip" draggable="true">
-                <div class="shipBlock"></div>
-                <div class="shipBlock"></div>
-                <div class="shipBlock"></div>
-                <div class="shipBlock"></div>
-            </div>
-            <div class="cruiser draggableShip verticalShip" draggable="true">
-                <div class="shipBlock"></div>
-                <div class="shipBlock"></div>
-                <div class="shipBlock"></div>
-            </div>
-            <div class="submarine draggableShip verticalShip" draggable="true">
-                <div class="shipBlock"></div>
-                <div class="shipBlock"></div>
-                <div class="shipBlock"></div>
-            </div>
-            <div class="destroyer draggableShip verticalShip" draggable="true">
-                <div class="shipBlock"></div>
-                <div class="shipBlock"></div>
+            <p class="playerMessage">It's a hit!</p>
+            <div id="gameboard1" class="gameboard1">
+                <div id="0" class="zone"></div>
+                <div id="1" class="zone"></div>
+                <div id="2" class="zone"></div>
+                <div id="3" class="zone"></div>
+                <div id="4" class="zone"></div>
+                <div id="5" class="zone"></div>
+                <div id="6" class="zone"></div>
+                <div id="7" class="zone"></div>
+                <div id="8" class="zone"></div>
+                <div id="9" class="zone"></div>
+                <div id="10" class="zone"></div>
+                <div id="11" class="zone"></div>
+                <div id="12" class="zone"></div>
+                <div id="13" class="zone"></div>
+                <div id="14" class="zone"></div>
+                <div id="15" class="zone"></div>
+                <div id="16" class="zone"></div>
+                <div id="17" class="zone"></div>
+                <div id="18" class="zone"></div>
+                <div id="19" class="zone"></div>
+                <div id="20" class="zone"></div>
+                <div id="21" class="zone"></div>
+                <div id="22" class="zone"></div>
+                <div id="23" class="zone"></div>
+                <div id="24" class="zone"></div>
+                <div id="25" class="zone"></div>
+                <div id="26" class="zone"></div>
+                <div id="27" class="zone"></div>
+                <div id="28" class="zone"></div>
+                <div id="29" class="zone"></div>
+                <div id="30" class="zone"></div>
+                <div id="31" class="zone"></div>
+                <div id="32" class="zone"></div>
+                <div id="33" class="zone"></div>
+                <div id="34" class="zone"></div>
+                <div id="35" class="zone"></div>
+                <div id="36" class="zone"></div>
+                <div id="37" class="zone"></div>
+                <div id="38" class="zone"></div>
+                <div id="39" class="zone"></div>
+                <div id="40" class="zone"></div>
+                <div id="41" class="zone"></div>
+                <div id="42" class="zone"></div>
+                <div id="43" class="zone"></div>
+                <div id="44" class="zone"></div>
+                <div id="45" class="zone"></div>
+                <div id="46" class="zone"></div>
+                <div id="47" class="zone"></div>
+                <div id="48" class="zone"></div>
+                <div id="49" class="zone"></div>
+                <div id="50" class="zone"></div>
+                <div id="51" class="zone"></div>
+                <div id="52" class="zone"></div>
+                <div id="53" class="zone"></div>
+                <div id="54" class="zone"></div>
+                <div id="55" class="zone"></div>
+                <div id="56" class="zone"></div>
+                <div id="57" class="zone"></div>
+                <div id="58" class="zone"></div>
+                <div id="59" class="zone"></div>
+                <div id="60" class="zone"></div>
+                <div id="61" class="zone"></div>
+                <div id="62" class="zone"></div>
+                <div id="63" class="zone"></div>
+                <div id="64" class="zone"></div>
+                <div id="65" class="zone"></div>
+                <div id="66" class="zone"></div>
+                <div id="67" class="zone"></div>
+                <div id="68" class="zone"></div>
+                <div id="69" class="zone"></div>
+                <div id="70" class="zone"></div>
+                <div id="71" class="zone"></div>
+                <div id="72" class="zone"></div>
+                <div id="73" class="zone"></div>
+                <div id="74" class="zone"></div>
+                <div id="75" class="zone"></div>
+                <div id="76" class="zone"></div>
+                <div id="77" class="zone"></div>
+                <div id="78" class="zone"></div>
+                <div id="79" class="zone"></div>
+                <div id="80" class="zone"></div>
+                <div id="81" class="zone"></div>
+                <div id="82" class="zone"></div>
+                <div id="83" class="zone"></div>
+                <div id="84" class="zone"></div>
+                <div id="85" class="zone"></div>
+                <div id="86" class="zone"></div>
+                <div id="87" class="zone"></div>
+                <div id="88" class="zone"></div>
+                <div id="89" class="zone"></div>
+                <div id="90" class="zone"></div>
+                <div id="91" class="zone"></div>
+                <div id="92" class="zone"></div>
+                <div id="93" class="zone"></div>
+                <div id="94" class="zone"></div>
+                <div id="95" class="zone"></div>
+                <div id="96" class="zone"></div>
+                <div id="97" class="zone"></div>
+                <div id="98" class="zone"></div>
+                <div id="99" class="zone"></div>
             </div>
         </div>
-        <div id="gameboard1" class="gameboard1">
-            <div id="0" class="zone"></div>
-            <div id="1" class="zone"></div>
-            <div id="2" class="zone"></div>
-            <div id="3" class="zone"></div>
-            <div id="4" class="zone"></div>
-            <div id="5" class="zone"></div>
-            <div id="6" class="zone"></div>
-            <div id="7" class="zone"></div>
-            <div id="8" class="zone"></div>
-            <div id="9" class="zone"></div>
-            <div id="10" class="zone"></div>
-            <div id="11" class="zone"></div>
-            <div id="12" class="zone"></div>
-            <div id="13" class="zone"></div>
-            <div id="14" class="zone"></div>
-            <div id="15" class="zone"></div>
-            <div id="16" class="zone"></div>
-            <div id="17" class="zone"></div>
-            <div id="18" class="zone"></div>
-            <div id="19" class="zone"></div>
-            <div id="20" class="zone"></div>
-            <div id="21" class="zone"></div>
-            <div id="22" class="zone"></div>
-            <div id="23" class="zone"></div>
-            <div id="24" class="zone"></div>
-            <div id="25" class="zone"></div>
-            <div id="26" class="zone"></div>
-            <div id="27" class="zone"></div>
-            <div id="28" class="zone"></div>
-            <div id="29" class="zone"></div>
-            <div id="30" class="zone"></div>
-            <div id="31" class="zone"></div>
-            <div id="32" class="zone"></div>
-            <div id="33" class="zone"></div>
-            <div id="34" class="zone"></div>
-            <div id="35" class="zone"></div>
-            <div id="36" class="zone"></div>
-            <div id="37" class="zone"></div>
-            <div id="38" class="zone"></div>
-            <div id="39" class="zone"></div>
-            <div id="40" class="zone"></div>
-            <div id="41" class="zone"></div>
-            <div id="42" class="zone"></div>
-            <div id="43" class="zone"></div>
-            <div id="44" class="zone"></div>
-            <div id="45" class="zone"></div>
-            <div id="46" class="zone"></div>
-            <div id="47" class="zone"></div>
-            <div id="48" class="zone"></div>
-            <div id="49" class="zone"></div>
-            <div id="50" class="zone"></div>
-            <div id="51" class="zone"></div>
-            <div id="52" class="zone"></div>
-            <div id="53" class="zone"></div>
-            <div id="54" class="zone"></div>
-            <div id="55" class="zone"></div>
-            <div id="56" class="zone"></div>
-            <div id="57" class="zone"></div>
-            <div id="58" class="zone"></div>
-            <div id="59" class="zone"></div>
-            <div id="60" class="zone"></div>
-            <div id="61" class="zone"></div>
-            <div id="62" class="zone"></div>
-            <div id="63" class="zone"></div>
-            <div id="64" class="zone"></div>
-            <div id="65" class="zone"></div>
-            <div id="66" class="zone"></div>
-            <div id="67" class="zone"></div>
-            <div id="68" class="zone"></div>
-            <div id="69" class="zone"></div>
-            <div id="70" class="zone"></div>
-            <div id="71" class="zone"></div>
-            <div id="72" class="zone"></div>
-            <div id="73" class="zone"></div>
-            <div id="74" class="zone"></div>
-            <div id="75" class="zone"></div>
-            <div id="76" class="zone"></div>
-            <div id="77" class="zone"></div>
-            <div id="78" class="zone"></div>
-            <div id="79" class="zone"></div>
-            <div id="80" class="zone"></div>
-            <div id="81" class="zone"></div>
-            <div id="82" class="zone"></div>
-            <div id="83" class="zone"></div>
-            <div id="84" class="zone"></div>
-            <div id="85" class="zone"></div>
-            <div id="86" class="zone"></div>
-            <div id="87" class="zone"></div>
-            <div id="88" class="zone"></div>
-            <div id="89" class="zone"></div>
-            <div id="90" class="zone"></div>
-            <div id="91" class="zone"></div>
-            <div id="92" class="zone"></div>
-            <div id="93" class="zone"></div>
-            <div id="94" class="zone"></div>
-            <div id="95" class="zone"></div>
-            <div id="96" class="zone"></div>
-            <div id="97" class="zone"></div>
-            <div id="98" class="zone"></div>
-            <div id="99" class="zone"></div>
+        <div class="player2Container">
+            <p class="playerMessage">It's a miss!</p>
+            <div id="gameboard2" class="gameboard2">
+                <div id="100" class="zone"></div>
+                <div id="101" class="zone"></div>
+                <div id="102" class="zone"></div>
+                <div id="103" class="zone"></div>
+                <div id="104" class="zone"></div>
+                <div id="105" class="zone"></div>
+                <div id="106" class="zone"></div>
+                <div id="107" class="zone"></div>
+                <div id="108" class="zone"></div>
+                <div id="109" class="zone"></div>
+                <div id="110" class="zone"></div>
+                <div id="111" class="zone"></div>
+                <div id="112" class="zone"></div>
+                <div id="113" class="zone"></div>
+                <div id="114" class="zone"></div>
+                <div id="115" class="zone"></div>
+                <div id="116" class="zone"></div>
+                <div id="117" class="zone"></div>
+                <div id="118" class="zone"></div>
+                <div id="119" class="zone"></div>
+                <div id="120" class="zone"></div>
+                <div id="121" class="zone"></div>
+                <div id="122" class="zone"></div>
+                <div id="123" class="zone"></div>
+                <div id="124" class="zone"></div>
+                <div id="125" class="zone"></div>
+                <div id="126" class="zone"></div>
+                <div id="127" class="zone"></div>
+                <div id="128" class="zone"></div>
+                <div id="129" class="zone"></div>
+                <div id="130" class="zone"></div>
+                <div id="131" class="zone"></div>
+                <div id="132" class="zone"></div>
+                <div id="133" class="zone"></div>
+                <div id="134" class="zone"></div>
+                <div id="135" class="zone"></div>
+                <div id="136" class="zone"></div>
+                <div id="137" class="zone"></div>
+                <div id="138" class="zone"></div>
+                <div id="139" class="zone"></div>
+                <div id="140" class="zone"></div>
+                <div id="141" class="zone"></div>
+                <div id="142" class="zone"></div>
+                <div id="143" class="zone"></div>
+                <div id="144" class="zone"></div>
+                <div id="145" class="zone"></div>
+                <div id="146" class="zone"></div>
+                <div id="147" class="zone"></div>
+                <div id="148" class="zone"></div>
+                <div id="149" class="zone"></div>
+                <div id="150" class="zone"></div>
+                <div id="151" class="zone"></div>
+                <div id="152" class="zone"></div>
+                <div id="153" class="zone"></div>
+                <div id="154" class="zone"></div>
+                <div id="155" class="zone"></div>
+                <div id="156" class="zone"></div>
+                <div id="157" class="zone"></div>
+                <div id="158" class="zone"></div>
+                <div id="159" class="zone"></div>
+                <div id="160" class="zone"></div>
+                <div id="161" class="zone"></div>
+                <div id="162" class="zone"></div>
+                <div id="163" class="zone"></div>
+                <div id="164" class="zone"></div>
+                <div id="165" class="zone"></div>
+                <div id="166" class="zone"></div>
+                <div id="167" class="zone"></div>
+                <div id="168" class="zone"></div>
+                <div id="169" class="zone"></div>
+                <div id="170" class="zone"></div>
+                <div id="171" class="zone"></div>
+                <div id="172" class="zone"></div>
+                <div id="173" class="zone"></div>
+                <div id="174" class="zone"></div>
+                <div id="175" class="zone"></div>
+                <div id="176" class="zone"></div>
+                <div id="177" class="zone"></div>
+                <div id="178" class="zone"></div>
+                <div id="179" class="zone"></div>
+                <div id="180" class="zone"></div>
+                <div id="181" class="zone"></div>
+                <div id="182" class="zone"></div>
+                <div id="183" class="zone"></div>
+                <div id="184" class="zone"></div>
+                <div id="185" class="zone"></div>
+                <div id="186" class="zone"></div>
+                <div id="187" class="zone"></div>
+                <div id="188" class="zone"></div>
+                <div id="189" class="zone"></div>
+                <div id="190" class="zone"></div>
+                <div id="191" class="zone"></div>
+                <div id="192" class="zone"></div>
+                <div id="193" class="zone"></div>
+                <div id="194" class="zone"></div>
+                <div id="195" class="zone"></div>
+                <div id="196" class="zone"></div>
+                <div id="197" class="zone"></div>
+                <div id="198" class="zone"></div>
+                <div id="199" class="zone"></div>
+            </div>
         </div>
-        <div id="gameboard2" class="gameboard2">
-            <div id="100" class="zone"></div>
-            <div id="101" class="zone"></div>
-            <div id="102" class="zone"></div>
-            <div id="103" class="zone"></div>
-            <div id="104" class="zone"></div>
-            <div id="105" class="zone"></div>
-            <div id="106" class="zone"></div>
-            <div id="107" class="zone"></div>
-            <div id="108" class="zone"></div>
-            <div id="109" class="zone"></div>
-            <div id="110" class="zone"></div>
-            <div id="111" class="zone"></div>
-            <div id="112" class="zone"></div>
-            <div id="113" class="zone"></div>
-            <div id="114" class="zone"></div>
-            <div id="115" class="zone"></div>
-            <div id="116" class="zone"></div>
-            <div id="117" class="zone"></div>
-            <div id="118" class="zone"></div>
-            <div id="119" class="zone"></div>
-            <div id="120" class="zone"></div>
-            <div id="121" class="zone"></div>
-            <div id="122" class="zone"></div>
-            <div id="123" class="zone"></div>
-            <div id="124" class="zone"></div>
-            <div id="125" class="zone"></div>
-            <div id="126" class="zone"></div>
-            <div id="127" class="zone"></div>
-            <div id="128" class="zone"></div>
-            <div id="129" class="zone"></div>
-            <div id="130" class="zone"></div>
-            <div id="131" class="zone"></div>
-            <div id="132" class="zone"></div>
-            <div id="133" class="zone"></div>
-            <div id="134" class="zone"></div>
-            <div id="135" class="zone"></div>
-            <div id="136" class="zone"></div>
-            <div id="137" class="zone"></div>
-            <div id="138" class="zone"></div>
-            <div id="139" class="zone"></div>
-            <div id="140" class="zone"></div>
-            <div id="141" class="zone"></div>
-            <div id="142" class="zone"></div>
-            <div id="143" class="zone"></div>
-            <div id="144" class="zone"></div>
-            <div id="145" class="zone"></div>
-            <div id="146" class="zone"></div>
-            <div id="147" class="zone"></div>
-            <div id="148" class="zone"></div>
-            <div id="149" class="zone"></div>
-            <div id="150" class="zone"></div>
-            <div id="151" class="zone"></div>
-            <div id="152" class="zone"></div>
-            <div id="153" class="zone"></div>
-            <div id="154" class="zone"></div>
-            <div id="155" class="zone"></div>
-            <div id="156" class="zone"></div>
-            <div id="157" class="zone"></div>
-            <div id="158" class="zone"></div>
-            <div id="159" class="zone"></div>
-            <div id="160" class="zone"></div>
-            <div id="161" class="zone"></div>
-            <div id="162" class="zone"></div>
-            <div id="163" class="zone"></div>
-            <div id="164" class="zone"></div>
-            <div id="165" class="zone"></div>
-            <div id="166" class="zone"></div>
-            <div id="167" class="zone"></div>
-            <div id="168" class="zone"></div>
-            <div id="169" class="zone"></div>
-            <div id="170" class="zone"></div>
-            <div id="171" class="zone"></div>
-            <div id="172" class="zone"></div>
-            <div id="173" class="zone"></div>
-            <div id="174" class="zone"></div>
-            <div id="175" class="zone"></div>
-            <div id="176" class="zone"></div>
-            <div id="177" class="zone"></div>
-            <div id="178" class="zone"></div>
-            <div id="179" class="zone"></div>
-            <div id="180" class="zone"></div>
-            <div id="181" class="zone"></div>
-            <div id="182" class="zone"></div>
-            <div id="183" class="zone"></div>
-            <div id="184" class="zone"></div>
-            <div id="185" class="zone"></div>
-            <div id="186" class="zone"></div>
-            <div id="187" class="zone"></div>
-            <div id="188" class="zone"></div>
-            <div id="189" class="zone"></div>
-            <div id="190" class="zone"></div>
-            <div id="191" class="zone"></div>
-            <div id="192" class="zone"></div>
-            <div id="193" class="zone"></div>
-            <div id="194" class="zone"></div>
-            <div id="195" class="zone"></div>
-            <div id="196" class="zone"></div>
-            <div id="197" class="zone"></div>
-            <div id="198" class="zone"></div>
-            <div id="199" class="zone"></div>
-        </div>
+
     </div>
 
     <script type="module" src="./index.js"></script>

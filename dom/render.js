@@ -3,10 +3,15 @@ import { dragAndDrop } from '../index.js';
 export const render = (() => {
   // render opening script
 
-
   const renderShip = (zones) => {
     for (let i = 0; i < zones.length; i++) {
       const zone = document.getElementById(zones[i]);
+      if (i === 0) {
+        zone.classList.add('shipFront');
+      }
+      if (i === zones.length - 1) {
+        zone.classList.add('shipBack');
+      }
       zone.classList.add('ship');
     }
   };
@@ -31,9 +36,6 @@ export const render = (() => {
     const destroyer = document.querySelector('.destroyer');
     destroyer.classList.toggle('hidden');
   };
-  const computerShipPlacement = () => {
-
-  }
   const renderHit = (zone) => {
     zone = document.getElementById(zone);
     zone.classList.add('hit');

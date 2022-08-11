@@ -15,6 +15,8 @@ export const events = () => {
     carrier.addEventListener('mousedown', dragAndDrop.shipPartIdentifier, {
       once: true,
     });
+    carrier.addEventListener('mousedown', dragAndDrop.shipOrientation);
+    carrier.addEventListener('mousedown', dragAndDrop.getOrientation);
     document.addEventListener('dragover', (event) => {
       event.preventDefault();
     });
@@ -31,9 +33,15 @@ export const events = () => {
   startUpDragAndDrop();
   const rotateBtn = document.getElementById('rotateShip');
   rotateBtn.addEventListener('click', () => {
+    // do this for other ships
     const ship = document.querySelector('.draggableShip');
-    ship.classList.toggle('verticalShip');
-    ship.classList.toggle('horizontalShip');
+    const children = Array.from(ship.children);
+    ship.classList.toggle('vertical');
+    ship.classList.toggle('horizontal');
+    children.forEach((part) => {
+      part.classList.toggle('vertical');
+      part.classList.toggle('horizontal');
+    });
   });
   const shipPlacementComplete = () => {
     // hide bank and ship button

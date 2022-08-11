@@ -1,4 +1,4 @@
-import { target, placeShipsRandomly } from './tools.js';
+import { target, placeShipsRandomly } from '../computer/tools.js';
 
 class Player {
   constructor(name) {

@@ -56,6 +56,7 @@ export const render = (() => {
     previousShip.classList.toggle('hidden');
     const newShip = document.querySelector(`.${nextShip}`);
     newShip.addEventListener('mousedown', dragAndDrop.shipPartIdentifier);
+    newShip.addEventListener('mousedown', dragAndDrop.shipOrientation);
     newShip.classList.toggle('hidden');
     const functions = {
       carrier: dragAndDrop.dropCarrier,

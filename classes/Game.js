@@ -1,6 +1,6 @@
 import { ComputerPlayer, HumanPlayer } from './Player.js';
 import { Gameboard } from './Gameboard.js';
-import { render } from './dom/render.js';
+import { render } from '../dom/render.js';
 
 export class Game {
   constructor(player1 = 'Player', player2 = 'Computer') {

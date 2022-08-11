@@ -1,6 +1,4 @@
-import { dragAndDrop } from './dom/dragAndDrop.js';
-import { render } from './dom/render.js';
-import { game } from './index.js';
+import { render } from '../dom/render.js';
 import { Ship } from './Ship.js';
 
 export class Gameboard {

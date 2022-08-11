@@ -102,6 +102,7 @@ export const target = (enemy) => {
   };
   return tryAttack();
 };
+
 export const placeShipsRandomly = (board) => {
   const shipZones = [];
   const getRandomInt = (min, max) => {

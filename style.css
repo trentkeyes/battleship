@@ -69,8 +69,13 @@ h1 {
 .playerMessage {
     grid-area: message;
     font-size: 30px;
-    font-weight: bold;
+    font-weight: 500;
     padding: 10px;
+}
+
+.introMessage {
+    font-size: 20px;
+    font-weight: normal;
 }
 
 .gameboard1,
@@ -81,7 +86,6 @@ h1 {
     align-items: center;
     width: 390px;
     background-color: rgb(0, 37, 102);
-
 }
 
 .gameboard1 {
@@ -95,7 +99,7 @@ h1 {
     border: .5px solid rgb(220, 220, 220);
 }
 
-.zone:hover {
+.gameboard2>.zone:hover {
     background-color: red;
     cursor: crosshair;
 }
@@ -124,7 +128,7 @@ h1 {
 }
 
 .miss {
-    background-color: rgb(220, 220, 220);
+    background-color: rgb(146, 146, 146);
     ;
 }
 
@@ -138,8 +142,6 @@ h1 {
     padding-right: 10px;
     border-radius: 5px;
     gap: 10px;
-
-
 }
 
 .draggableShip {
@@ -154,27 +156,6 @@ h1 {
     height: 39px;
     background-color: black;
 }
-
-/* .draggableShip.verticalShip>div:first-child {
-    border-top-left-radius: 50%;
-    border-top-right-radius: 50%;
-}
-
-.draggableShip.verticalShip>div:last-child {
-    border-bottom-left-radius: 50%;
-    border-bottom-right-radius: 50%;
-}
-
-.draggableShip.horizontalShip>div:first-child {
-    border-top-left-radius: 50%;
-    border-top-right-radius: 50%;
-}
-
-.draggableShip.horizontalShip>div:last-child {
-    border-bottom-left-radius: 50%;
-    border-bottom-right-radius: 50%;
-} */
-
 
 .verticalShip {
     flex-direction: column;

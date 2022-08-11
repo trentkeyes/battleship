@@ -1,7 +1,7 @@
-import { dragAndDrop } from './index.js';
+import { dragAndDrop } from './dom/dragAndDrop.js';
 import { render } from './dom/render.js';
 import { game } from './index.js';
-import { Ship } from './ship.js';
+import { Ship } from './Ship.js';
 
 export class Gameboard {
   constructor() {
@@ -18,6 +18,7 @@ export class Gameboard {
   }
   placeShip(length, zones) {
     // check if zones intersect with previously placed ship
+    zones = zones.map((zone) => Number(zone));
     for (const location of zones) {
       for (const ship of this.ships) {
         if (ship.zones.some((element) => element === location)) {
@@ -73,12 +74,11 @@ export class Gameboard {
 
   receiveAttack(target) {
     for (const ship of this.ships) {
-      const hit = ship.zones.filter((zone) => zone === target);
-
-      if (hit.length === 1) {
+      const onTarget = ship.zones.filter((zone) => zone === target);
+      if (onTarget.length === 1) {
         ship.hitShip(target);
-        ship.sinkShip();
         render.renderHit(target);
+        // it's a hit
         console.log('successful shot');
         return true;
       }

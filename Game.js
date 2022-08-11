@@ -1,7 +1,6 @@
 import { ComputerPlayer, HumanPlayer } from './Player.js';
 import { Gameboard } from './Gameboard.js';
-import { events } from './dom/events.js';
-import { dragAndDrop } from './index.js';
+import { render } from './dom/render.js';
 
 export class Game {
   constructor(player1 = 'Player', player2 = 'Computer') {
@@ -9,7 +8,7 @@ export class Game {
     this.player2 = new ComputerPlayer(player2);
     this.gameboard1 = new Gameboard();
     this.gameboard2 = new Gameboard();
-    this.gameOver = false;
+    this.gameOver = true;
     this.winner = '';
     this.turn = 0;
   }
@@ -20,12 +19,13 @@ export class Game {
     this.player1.enemy = this.player2;
     this.player2.enemy = this.player1;
     this.player2.placeShips(this.gameboard2);
-
     console.log(this.gameboard2.ships);
-    // run intro messages
 
-    // user places carrier, then next ship...
-
+    //this.gameOver = false;
+  }
+  setUpComplete() {
+    render.shipPlacementComplete();
+    this.gameOver = false;
     this.player1.turn = true;
   }
   playRound(zone) {
@@ -34,7 +34,7 @@ export class Game {
       if (this.gameboard2.allSunk()) {
         this.winner = this.player1;
         this.gameOver = true;
-        console.log(`${this.winner.name} won the game!`);
+        render.player1Win();
         return;
       }
       const compAttack = () => {
@@ -42,7 +42,7 @@ export class Game {
         if (this.gameboard1.allSunk()) {
           this.winner = this.player2;
           this.gameOver = true;
-          console.log(`${this.winner.name} won the game!`);
+          render.player2Win();
           return;
         }
       };

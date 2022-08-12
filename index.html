@@ -18,40 +18,7 @@
 <body>
     <div id="container" class="container">
         <h1 class="title">BATTLESHIP</h1>
-        <div class="player1Container">
-            <div class="shipBank hidden">
-                <button id="rotateShip" class="rotateShip">
-                    Rotate Ship
-                </button>
-                <div class="carrier draggableShip vertical" draggable="true">
-                    <div class="shipBlock vertical"></div>
-                    <div class="shipBlock vertical"></div>
-                    <div class="shipBlock vertical"></div>
-                    <div class="shipBlock vertical"></div>
-                    <div class="shipBlock vertical"></div>
-                </div>
-                <div class="battleship draggableShip vertical" draggable="true">
-                    <div class="shipBlock vertical"></div>
-                    <div class="shipBlock vertical"></div>
-                    <div class="shipBlock vertical"></div>
-                    <div class="shipBlock vertical"></div>
-                </div>
-                <div class="cruiser draggableShip vertical" draggable="true">
-                    <div class="shipBlock vertical"></div>
-                    <div class="shipBlock vertical"></div>
-                    <div class="shipBlock vertical"></div>
-                </div>
-                <div class="submarine draggableShip vertical" draggable="true">
-                    <div class="shipBlock vertical"></div>
-                    <div class="shipBlock vertical"></div>
-                    <div class="shipBlock vertical"></div>
-                </div>
-                <div class="destroyer draggableShip vertical" draggable="true">
-                    <div class="shipBlock vertical"></div>
-                    <div class="shipBlock vertical"></div>
-                </div>
-
-            </div>
+        <div class="gameBoards">
             <p class="playerMessage" id="player1Message"></p>
             <div id="gameboard1" class="gameboard1">
                 <div id="0" class="zone"></div>
@@ -155,9 +122,39 @@
                 <div id="98" class="zone"></div>
                 <div id="99" class="zone"></div>
             </div>
-        </div>
-        <div class="player2Container">
-            <p class="playerMessage" id="player2Message"></p>
+            <p class="player1Label">Your fleet</p>
+            <div class="shipBank hidden">
+                <button id="rotateShip" class="rotateShip">
+                    Rotate Ship
+                </button>
+                <div class="carrier draggableShip vertical" draggable="true">
+                    <div class="shipBlock vertical"></div>
+                    <div class="shipBlock vertical"></div>
+                    <div class="shipBlock vertical"></div>
+                    <div class="shipBlock vertical"></div>
+                    <div class="shipBlock vertical"></div>
+                </div>
+                <div class="battleship draggableShip vertical" draggable="true">
+                    <div class="shipBlock vertical"></div>
+                    <div class="shipBlock vertical"></div>
+                    <div class="shipBlock vertical"></div>
+                    <div class="shipBlock vertical"></div>
+                </div>
+                <div class="cruiser draggableShip vertical" draggable="true">
+                    <div class="shipBlock vertical"></div>
+                    <div class="shipBlock vertical"></div>
+                    <div class="shipBlock vertical"></div>
+                </div>
+                <div class="submarine draggableShip vertical" draggable="true">
+                    <div class="shipBlock vertical"></div>
+                    <div class="shipBlock vertical"></div>
+                    <div class="shipBlock vertical"></div>
+                </div>
+                <div class="destroyer draggableShip vertical" draggable="true">
+                    <div class="shipBlock vertical"></div>
+                    <div class="shipBlock vertical"></div>
+                </div>
+            </div>
             <div id="gameboard2" class="gameboard2">
                 <div id="100" class="zone"></div>
                 <div id="101" class="zone"></div>
@@ -260,9 +257,23 @@
                 <div id="198" class="zone"></div>
                 <div id="199" class="zone"></div>
             </div>
+            <p class="player2Label">Enemy fleet</p>
         </div>
-
+       
     </div>
+     <footer class="footer">
+            <div class="credit">
+                <span>Trent Keyes 2022</span>
+                <div class="logoContainer">
+                    <a href="https://github.com/trentkeyes">
+                        <img src="./images/GitHub-Mark-32px.png" alt="Github logo">
+                    </a>
+                </div>
+
+            </div>
+            <span>Photo by <a href="https://unsplash.com/@wirhabenzeit">Dominik
+                    Schröder</a></span>
+        </footer>
 </body>
 
 </html>

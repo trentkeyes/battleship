@@ -34,13 +34,15 @@ export const events = () => {
   const rotateBtn = document.getElementById('rotateShip');
   rotateBtn.addEventListener('click', () => {
     // do this for other ships
-    const ship = document.querySelector('.draggableShip');
-    const children = Array.from(ship.children);
-    ship.classList.toggle('vertical');
-    ship.classList.toggle('horizontal');
-    children.forEach((part) => {
-      part.classList.toggle('vertical');
-      part.classList.toggle('horizontal');
+    const ships = document.querySelectorAll('.draggableShip');
+    ships.forEach((ship) => {
+      ship.classList.toggle('vertical');
+      ship.classList.toggle('horizontal');
+      const children = Array.from(ship.children);
+      children.forEach((part) => {
+        part.classList.toggle('vertical');
+        part.classList.toggle('horizontal');
+      });
     });
   });
   const shipPlacementComplete = () => {

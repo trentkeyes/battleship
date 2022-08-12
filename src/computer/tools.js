@@ -102,6 +102,10 @@ export const target = (enemy) => {
   return tryAttack();
 };
 
+let placedShipZones = [];
+const setPlacedShipZones = (zones) => (placedShipZones = zones);
+const getPlacedShipZones = () => placedShipZones;
+
 export const placeShipsRandomly = (board) => {
   const getRandomInt = (min, max) => {
     min = Math.ceil(min);
@@ -130,13 +134,12 @@ export const placeShipsRandomly = (board) => {
       }
       return zones;
     };
-    let shipZones = [];
-    // check if generated ship doesnt intersect with other ships or go outside border
     while (true) {
       let zones = generateZones(size);
-      console.log(zones);
+      let placedShipZones = getPlacedShipZones();
       if (
-        zones.every((zone) => !shipZones.includes(zone)) &&
+        // check if generated ship doesnt intersect with other ships or go outside border
+        zones.every((zone) => !placedShipZones.includes(zone)) &&
         zones.every((zone) => zone <= 200) &&
         // ships don't wrap from the right edge to the left
         !zones.includes(109 && 110) &&
@@ -149,39 +152,11 @@ export const placeShipsRandomly = (board) => {
         !zones.includes(179 && 180) &&
         !zones.includes(189 && 190)
       ) {
-        shipZones = shipZones.concat(zones);
+        setPlacedShipZones(placedShipZones.concat(zones));
         return zones;
       } else {
         continue;
       }
-
-      // if (zones.every(zone=> shipZones.includes(zone != (shipZones.some(zone => ))))
-      // if (
-      //   zones.every((zone) => !shipZones.includes(zone)) &&
-      //   zones.every((zone) => zone <= 200)
-      //   // !zones.includes(109 && 110) &&
-      //   // !zones.includes(119 && 120)
-      // ) {
-      //   shipZones = shipZones.concat(zones);
-      //   return zones;
-      // } else {
-      //   //   continue;
-      //   console.log('badship');
-      // }
-      // for (let i = 0; i < zones.length; i++) {
-      //   console.log(zones[i]);
-      //   if (
-      //     // if every element of zones does not equal some element of shipzones
-      //     shipZones.some((element) => element === zones[i]) ||
-      //     zones[i] >= 200
-      //   ) {
-      //     // try again with different coordinates
-      //     break;
-      //   } else {
-      //     shipZones = shipZones.concat(zones);
-      //     return zones;
-      //   }
-      // }
     }
   };
   const carrier = buildShip(5);

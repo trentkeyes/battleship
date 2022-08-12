@@ -76,13 +76,10 @@ export class Gameboard {
       if (onTarget.length === 1) {
         ship.hitShip(target);
         render.renderHit(target);
-        // it's a hit
-        console.log('successful shot');
         return true;
       }
     }
     this.missedShots.push(target);
-    console.log('missed shot', this.missedShots);
     render.renderMiss(target);
     return true;
   }

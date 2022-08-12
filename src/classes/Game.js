@@ -19,7 +19,12 @@ export class Game {
     this.player1.enemy = this.player2;
     this.player2.enemy = this.player1;
     this.player2.placeShips(this.gameboard2);
-    console.log(this.gameboard2.ships);
+    const logShips = () => {
+      for (const ship of this.gameboard2.ships) {
+        console.log(ship.zones);
+      }
+    };
+    logShips();
 
     //this.gameOver = false;
   }

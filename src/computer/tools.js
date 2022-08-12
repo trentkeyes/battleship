@@ -3,7 +3,6 @@ export const target = (enemy) => {
     (ship) => !ship.sunk && ship.hits.length > 0
   );
   const smartTarget = () => {
-    // if last digit is 0, 9, 0-9, 90-99, 100-109, 190-199
     const successfulHits = damagedShips[0].hits.sort((a, b) => a - b);
     let targetOptions;
     // 'edge' cases only have three target options
@@ -104,7 +103,6 @@ export const target = (enemy) => {
 };
 
 export const placeShipsRandomly = (board) => {
-  const shipZones = [];
   const getRandomInt = (min, max) => {
     min = Math.ceil(min);
     max = Math.floor(max);
@@ -132,19 +130,58 @@ export const placeShipsRandomly = (board) => {
       }
       return zones;
     };
-    // check if generated ship doesnt intersect with other ships or goes outside border
-    let goodShip = false;
-    while (!goodShip) {
+    let shipZones = [];
+    // check if generated ship doesnt intersect with other ships or go outside border
+    while (true) {
       let zones = generateZones(size);
-      for (const zone of zones) {
-        if (shipZones.some((element) => element === zone) || zone >= 200) {
-          // try again with different coordinates
-          continue;
-        } else {
-          shipZones.concat(zones);
-          return zones;
-        }
+      console.log(zones);
+      if (
+        zones.every((zone) => !shipZones.includes(zone)) &&
+        zones.every((zone) => zone <= 200) &&
+        // ships don't wrap from the right edge to the left
+        !zones.includes(109 && 110) &&
+        !zones.includes(119 && 120) &&
+        !zones.includes(129 && 130) &&
+        !zones.includes(139 && 140) &&
+        !zones.includes(149 && 150) &&
+        !zones.includes(159 && 160) &&
+        !zones.includes(169 && 170) &&
+        !zones.includes(179 && 180) &&
+        !zones.includes(189 && 190)
+      ) {
+        shipZones = shipZones.concat(zones);
+        return zones;
+      } else {
+        continue;
       }
+
+      // if (zones.every(zone=> shipZones.includes(zone != (shipZones.some(zone => ))))
+      // if (
+      //   zones.every((zone) => !shipZones.includes(zone)) &&
+      //   zones.every((zone) => zone <= 200)
+      //   // !zones.includes(109 && 110) &&
+      //   // !zones.includes(119 && 120)
+      // ) {
+      //   shipZones = shipZones.concat(zones);
+      //   return zones;
+      // } else {
+      //   //   continue;
+      //   console.log('badship');
+      // }
+      // for (let i = 0; i < zones.length; i++) {
+      //   console.log(zones[i]);
+      //   if (
+      //     // if every element of zones does not equal some element of shipzones
+      //     shipZones.some((element) => element === zones[i]) ||
+      //     zones[i] >= 200
+      //   ) {
+      //     // try again with different coordinates
+      //     break;
+      //   } else {
+      //     shipZones = shipZones.concat(zones);
+      //     return zones;
+      //   }
+      // }
     }
   };
   const carrier = buildShip(5);

@@ -1,4 +1,4 @@
-import { render } from '../src/dom/render.js';
+import { render } from '../dom/render.js';
 import { Ship } from './Ship.js';
 
 export class Gameboard {

@@ -21,6 +21,28 @@ export const dragAndDrop = (() => {
     }
     setOrientation(orientation);
   };
+  const valid = (zones) => {
+    console.log('drop fired');
+    const zoneIDs = [];
+    for (const zone of zones) {
+      zoneIDs.push(zone.id);
+    }
+    return (
+      // ship can't intersect with another ship
+      zones.every((element) => !element.classList.contains('ship')) &&
+      zoneIDs.every((element) => element < 100) &&
+      // ship can't be placed from eg zone 9 on the right edge to zone 10 on the left
+      !zoneIDs.includes(109 && 110) &&
+      !zoneIDs.includes(119 && 120) &&
+      !zoneIDs.includes(129 && 130) &&
+      !zoneIDs.includes(139 && 140) &&
+      !zoneIDs.includes(149 && 150) &&
+      !zoneIDs.includes(159 && 160) &&
+      !zoneIDs.includes(169 && 170) &&
+      !zoneIDs.includes(179 && 180) &&
+      !zoneIDs.includes(189 && 190)
+    );
+  };
   const dropCarrier = (e) => {
     e.preventDefault();
     const size = 5;
@@ -57,13 +79,7 @@ export const dragAndDrop = (() => {
             zoneBelow3,
             zoneBelow4,
           ];
-          if (
-            !e.target.classList.contains('ship') &&
-            !zoneBelow1.classList.contains('ship') &&
-            !zoneBelow2.classList.contains('ship') &&
-            !zoneBelow3.classList.contains('ship') &&
-            !zoneBelow4.classList.contains('ship')
-          ) {
+          if (valid(zones)) {
             game.gameboard1.placeShip(size, [
               e.target.id,
               zoneBelow1.id,
@@ -74,13 +90,14 @@ export const dragAndDrop = (() => {
           }
         }
         if (shipPart === 1) {
-          if (
-            !zoneAbove1.classList.contains('ship') &&
-            !e.target.classList.contains('ship') &&
-            !zoneBelow1.classList.contains('ship') &&
-            !zoneBelow2.classList.contains('ship') &&
-            !zoneBelow3.classList.contains('ship')
-          ) {
+          const zones = [
+            zoneAbove1,
+            e.target,
+            zoneBelow1,
+            zoneBelow2,
+            zoneBelow3,
+          ];
+          if (valid(zones)) {
             game.gameboard1.placeShip(size, [
               zoneAbove1.id,
               e.target.id,
@@ -91,13 +108,14 @@ export const dragAndDrop = (() => {
           }
         }
         if (shipPart === 2) {
-          if (
-            !zoneAbove2.classList.contains('ship') &&
-            !zoneAbove1.classList.contains('ship') &&
-            !e.target.classList.contains('ship') &&
-            !zoneBelow1.classList.contains('ship') &&
-            !zoneBelow2.classList.contains('ship')
-          ) {
+          const zones = [
+            zoneAbove2,
+            zoneAbove1,
+            e.target,
+            zoneBelow1,
+            zoneBelow2,
+          ];
+          if (valid(zones)) {
             game.gameboard1.placeShip(size, [
               zoneAbove2.id,
               zoneAbove1.id,
@@ -108,13 +126,14 @@ export const dragAndDrop = (() => {
           }
         }
         if (shipPart === 3) {
-          if (
-            !zoneAbove1.classList.contains('ship') &&
-            !zoneAbove2.classList.contains('ship') &&
-            !zoneAbove3.classList.contains('ship') &&
-            !zoneBelow1.classList.contains('ship') &&
-            !e.target.classList.contains('ship')
-          ) {
+          const zones = [
+            zoneAbove3,
+            zoneAbove2,
+            zoneAbove1,
+            e.target,
+            zoneBelow1,
+          ];
+          if (valid(zones)) {
             game.gameboard1.placeShip(size, [
               zoneAbove3.id,
               zoneAbove2.id,
@@ -125,13 +144,14 @@ export const dragAndDrop = (() => {
           }
         }
         if (shipPart === 4) {
-          if (
-            !zoneAbove1.classList.contains('ship') &&
-            !zoneAbove2.classList.contains('ship') &&
-            !zoneAbove3.classList.contains('ship') &&
-            !zoneAbove4.classList.contains('ship') &&
-            !e.target.classList.contains('ship')
-          ) {
+          const zones = [
+            zoneAbove4,
+            zoneAbove3,
+            zoneAbove2,
+            zoneAbove1,
+            e.target,
+          ];
+          if (valid(zones)) {
             game.gameboard1.placeShip(size, [
               zoneAbove4.id,
               zoneAbove3.id,
@@ -144,13 +164,14 @@ export const dragAndDrop = (() => {
       }
       if (orientation === 'horizontal') {
         if (shipPart === 0) {
-          if (
-            !e.target.classList.contains('ship') &&
-            !zoneAfter1.classList.contains('ship') &&
-            !zoneAfter2.classList.contains('ship') &&
-            !zoneAfter3.classList.contains('ship') &&
-            !zoneAfter4.classList.contains('ship')
-          ) {
+          const zones = [
+            e.target,
+            zoneAfter1,
+            zoneAfter2,
+            zoneAfter3,
+            zoneAfter4,
+          ];
+          if (valid(zones)) {
             game.gameboard1.placeShip(size, [
               e.target.id,
               zoneAfter1.id,
@@ -161,13 +182,14 @@ export const dragAndDrop = (() => {
           }
         }
         if (shipPart === 1) {
-          if (
-            !zoneBefore1.classList.contains('ship') &&
-            !e.target.classList.contains('ship') &&
-            !zoneAfter1.classList.contains('ship') &&
-            !zoneAfter2.classList.contains('ship') &&
-            !zoneAfter3.classList.contains('ship')
-          ) {
+          const zones = [
+            zoneBefore1,
+            e.target,
+            zoneAfter1,
+            zoneAfter2,
+            zoneAfter3,
+          ];
+          if (valid(zones)) {
             game.gameboard1.placeShip(size, [
               zoneBefore1.id,
               e.target.id,
@@ -178,13 +200,14 @@ export const dragAndDrop = (() => {
           }
         }
         if (shipPart === 2) {
-          if (
-            !zoneBefore2.classList.contains('ship') &&
-            !zoneBefore1.classList.contains('ship') &&
-            !e.target.classList.contains('ship') &&
-            !zoneAfter1.classList.contains('ship') &&
-            !zoneAfter2.classList.contains('ship')
-          ) {
+          const zones = [
+            zoneBefore2,
+            zoneBefore1,
+            e.target,
+            zoneAfter1,
+            zoneAfter2,
+          ];
+          if (valid(zones)) {
             game.gameboard1.placeShip(size, [
               zoneBefore2.id,
               zoneBefore1.id,
@@ -195,13 +218,14 @@ export const dragAndDrop = (() => {
           }
         }
         if (shipPart === 3) {
-          if (
-            !zoneBefore1.classList.contains('ship') &&
-            !zoneBefore2.classList.contains('ship') &&
-            !zoneBefore3.classList.contains('ship') &&
-            !e.target.classList.contains('ship') &&
-            !zoneAfter1.classList.contains('ship')
-          ) {
+          const zones = [
+            zoneBefore3,
+            zoneBefore2,
+            zoneBefore1,
+            e.target,
+            zoneAfter1,
+          ];
+          if (valid(zones)) {
             game.gameboard1.placeShip(size, [
               zoneBefore3.id,
               zoneBefore2.id,
@@ -212,13 +236,14 @@ export const dragAndDrop = (() => {
           }
         }
         if (shipPart === 4) {
-          if (
-            !zoneBefore1.classList.contains('ship') &&
-            !zoneBefore2.classList.contains('ship') &&
-            !zoneBefore3.classList.contains('ship') &&
-            !zoneBefore4.classList.contains('ship') &&
-            !e.target.classList.contains('ship')
-          ) {
+          const zones = [
+            zoneBefore4,
+            zoneBefore3,
+            zoneBefore2,
+            zoneBefore1,
+            e.target,
+          ];
+          if (valid(zones)) {
             game.gameboard1.placeShip(size, [
               zoneBefore4.id,
               zoneBefore3.id,
@@ -257,12 +282,8 @@ export const dragAndDrop = (() => {
       const zoneAfter3 = document.getElementById(`${Number(e.target.id) + 3}`);
       if (orientation === 'vertical') {
         if (shipPart === 0) {
-          if (
-            !e.target.classList.contains('ship') &&
-            !zoneBelow1.classList.contains('ship') &&
-            !zoneBelow2.classList.contains('ship') &&
-            !zoneBelow3.classList.contains('ship')
-          ) {
+          const zones = [e.target, zoneBelow1, zoneBelow2, zoneBelow3];
+          if (valid(zones)) {
             game.gameboard1.placeShip(size, [
               e.target.id,
               zoneBelow1.id,
@@ -272,12 +293,8 @@ export const dragAndDrop = (() => {
           }
         }
         if (shipPart === 1) {
-          if (
-            !zoneAbove1.classList.contains('ship') &&
-            !e.target.classList.contains('ship') &&
-            !zoneBelow1.classList.contains('ship') &&
-            !zoneBelow2.classList.contains('ship')
-          ) {
+          const zones = [zoneAbove1, e.target, zoneBelow1, zoneBelow2];
+          if (valid(zones)) {
             game.gameboard1.placeShip(size, [
               zoneAbove1.id,
               e.target.id,
@@ -287,12 +304,8 @@ export const dragAndDrop = (() => {
           }
         }
         if (shipPart === 2) {
-          if (
-            !zoneAbove2.classList.contains('ship') &&
-            !zoneAbove1.classList.contains('ship') &&
-            !e.target.classList.contains('ship') &&
-            !zoneBelow1.classList.contains('ship')
-          ) {
+          const zones = [zoneAbove2, zoneAbove1, e.target, zoneBelow1];
+          if (valid(zones)) {
             game.gameboard1.placeShip(size, [
               zoneAbove2.id,
               zoneAbove1.id,
@@ -302,12 +315,8 @@ export const dragAndDrop = (() => {
           }
         }
         if (shipPart === 3) {
-          if (
-            !zoneAbove3.classList.contains('ship') &&
-            !zoneAbove2.classList.contains('ship') &&
-            !zoneAbove1.classList.contains('ship') &&
-            !e.target.classList.contains('ship')
-          ) {
+          const zones = [zoneAbove3, zoneAbove2, zoneAbove1, e.target];
+          if (valid(zones)) {
             game.gameboard1.placeShip(size, [
               zoneAbove3.id,
               zoneAbove2.id,
@@ -319,12 +328,8 @@ export const dragAndDrop = (() => {
       }
       if (orientation === 'horizontal') {
         if (shipPart === 0) {
-          if (
-            !e.target.classList.contains('ship') &&
-            !zoneAfter1.classList.contains('ship') &&
-            !zoneAfter2.classList.contains('ship') &&
-            !zoneAfter3.classList.contains('ship')
-          ) {
+          const zones = [e.target, zoneAfter1, zoneAfter2, zoneAfter3];
+          if (valid(zones)) {
             game.gameboard1.placeShip(size, [
               e.target.id,
               zoneAfter1.id,
@@ -334,12 +339,8 @@ export const dragAndDrop = (() => {
           }
         }
         if (shipPart === 1) {
-          if (
-            !zoneBefore1.classList.contains('ship') &&
-            !e.target.classList.contains('ship') &&
-            !zoneAfter1.classList.contains('ship') &&
-            !zoneAfter2.classList.contains('ship')
-          ) {
+          const zones = [zoneBefore1, e.target, zoneAfter1, zoneAfter2];
+          if (valid(zones)) {
             game.gameboard1.placeShip(size, [
               zoneBefore1.id,
               e.target.id,
@@ -349,12 +350,8 @@ export const dragAndDrop = (() => {
           }
         }
         if (shipPart === 2) {
-          if (
-            !zoneBefore2.classList.contains('ship') &&
-            !zoneBefore1.classList.contains('ship') &&
-            !e.target.classList.contains('ship') &&
-            !zoneAfter1.classList.contains('ship')
-          ) {
+          const zones = [zoneBefore2, zoneBefore1, e.target, zoneAfter1];
+          if (valid(zones)) {
             game.gameboard1.placeShip(size, [
               zoneBefore2.id,
               zoneBefore1.id,
@@ -364,12 +361,8 @@ export const dragAndDrop = (() => {
           }
         }
         if (shipPart === 3) {
-          if (
-            !zoneBefore3.classList.contains('ship') &&
-            !zoneBefore2.classList.contains('ship') &&
-            !zoneBefore1.classList.contains('ship') &&
-            !e.target.classList.contains('ship')
-          ) {
+          const zones = [zoneBefore3, zoneBefore2, zoneBefore1, e.target];
+          if (valid(zones)) {
             game.gameboard1.placeShip(size, [
               zoneBefore3.id,
               zoneBefore2.id,
@@ -403,11 +396,8 @@ export const dragAndDrop = (() => {
       const zoneAfter2 = document.getElementById(`${Number(e.target.id) + 2}`);
       if (orientation === 'vertical') {
         if (shipPart === 0) {
-          if (
-            !e.target.classList.contains('ship') &&
-            !zoneBelow1.classList.contains('ship') &&
-            !zoneBelow2.classList.contains('ship')
-          ) {
+          const zones = [e.target, zoneBelow1, zoneBelow2];
+          if (valid(zones)) {
             game.gameboard1.placeShip(size, [
               e.target.id,
               zoneBelow1.id,
@@ -416,11 +406,8 @@ export const dragAndDrop = (() => {
           }
         }
         if (shipPart === 1) {
-          if (
-            !zoneAbove1.classList.contains('ship') &&
-            !e.target.classList.contains('ship') &&
-            !zoneBelow1.classList.contains('ship')
-          ) {
+          const zones = [zoneAbove1, e.target, zoneBelow1];
+          if (valid(zones)) {
             game.gameboard1.placeShip(size, [
               zoneAbove1.id,
               e.target.id,
@@ -429,11 +416,8 @@ export const dragAndDrop = (() => {
           }
         }
         if (shipPart === 2) {
-          if (
-            !zoneAbove2.classList.contains('ship') &&
-            !zoneAbove1.classList.contains('ship') &&
-            !e.target.classList.contains('ship')
-          ) {
+          const zones = [zoneAbove2, zoneAbove1, e.target];
+          if (valid(zones)) {
             game.gameboard1.placeShip(size, [
               zoneAbove2.id,
               zoneAbove1.id,
@@ -444,11 +428,8 @@ export const dragAndDrop = (() => {
       }
       if (orientation === 'horizontal') {
         if (shipPart === 0) {
-          if (
-            !e.target.classList.contains('ship') &&
-            !zoneAfter1.classList.contains('ship') &&
-            !zoneAfter2.classList.contains('ship')
-          ) {
+          const zones = [e.target, zoneAfter1, zoneAfter2];
+          if (valid(zones)) {
             game.gameboard1.placeShip(size, [
               e.target.id,
               zoneAfter1.id,
@@ -457,11 +438,8 @@ export const dragAndDrop = (() => {
           }
         }
         if (shipPart === 1) {
-          if (
-            !zoneBefore1.classList.contains('ship') &&
-            !e.target.classList.contains('ship') &&
-            !zoneAfter1.classList.contains('ship')
-          ) {
+          const zones = [zoneBefore1, e.target, zoneAfter1];
+          if (valid(zones)) {
             game.gameboard1.placeShip(size, [
               zoneBefore1.id,
               e.target.id,
@@ -470,11 +448,8 @@ export const dragAndDrop = (() => {
           }
         }
         if (shipPart === 2) {
-          if (
-            !zoneBefore2.classList.contains('ship') &&
-            !zoneBefore1.classList.contains('ship') &&
-            !e.target.classList.contains('ship')
-          ) {
+          const zones = [zoneBefore2, zoneBefore1, e.target];
+          if (valid(zones)) {
             game.gameboard1.placeShip(size, [
               zoneBefore2.id,
               zoneBefore1.id,
@@ -503,36 +478,28 @@ export const dragAndDrop = (() => {
       const zoneAfter1 = document.getElementById(`${Number(e.target.id) + 1}`);
       if (orientation === 'vertical') {
         if (shipPart === 0) {
-          if (
-            !e.target.classList.contains('ship') &&
-            !zoneBelow1.classList.contains('ship')
-          ) {
+          const zones = [e.target, zoneBelow1];
+          if (valid(zones)) {
             game.gameboard1.placeShip(size, [e.target.id, zoneBelow1.id]);
           }
         }
         if (shipPart === 1) {
-          if (
-            !zoneAbove1.classList.contains('ship') &&
-            !e.target.classList.contains('ship')
-          ) {
+          const zones = [zoneAbove1, e.target];
+          if (valid(zones)) {
             game.gameboard1.placeShip(size, [zoneAbove1.id, e.target.id]);
           }
         }
       }
       if (orientation === 'horizontal') {
         if (shipPart === 0) {
-          if (
-            !e.target.classList.contains('ship') &&
-            !zoneAfter1.classList.contains('ship')
-          ) {
+          const zones = [e.target, zoneAfter1];
+          if (valid(zones)) {
             game.gameboard1.placeShip(size, [e.target.id, zoneAfter1.id]);
           }
         }
         if (shipPart === 1) {
-          if (
-            !zoneBefore1.classList.contains('ship') &&
-            !e.target.classList.contains('ship')
-          ) {
+          const zones = [zoneBefore1, e.target];
+          if (valid(zones)) {
             game.gameboard1.placeShip(size, [zoneBefore1.id, e.target.id]);
           }
         }

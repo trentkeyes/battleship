@@ -480,12 +480,14 @@ export const dragAndDrop = (() => {
           const zones = [e.target, zoneBelow1];
           if (valid(zones)) {
             game.gameboard1.placeShip(size, [e.target.id, zoneBelow1.id]);
+            game.setUpComplete();
           }
         }
         if (shipPart === 1) {
           const zones = [zoneAbove1, e.target];
           if (valid(zones)) {
             game.gameboard1.placeShip(size, [zoneAbove1.id, e.target.id]);
+            game.setUpComplete();
           }
         }
       }
@@ -494,17 +496,19 @@ export const dragAndDrop = (() => {
           const zones = [e.target, zoneAfter1];
           if (valid(zones)) {
             game.gameboard1.placeShip(size, [e.target.id, zoneAfter1.id]);
+            game.setUpComplete();
           }
         }
         if (shipPart === 1) {
           const zones = [zoneBefore1, e.target];
           if (valid(zones)) {
             game.gameboard1.placeShip(size, [zoneBefore1.id, e.target.id]);
+            game.setUpComplete();
           }
         }
       }
     }
-    game.setUpComplete();
+
   };
   return {
     shipPartIdentifier,

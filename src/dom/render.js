@@ -11,7 +11,6 @@ export const render = (() => {
   };
   const introMessage = (() => {
     message.classList.add('introMessage');
-    message.textContent = 'The enemy is preparing their attack!';
     timeouts = [];
     timeouts.push(
       setTimeout(() => {
@@ -36,6 +35,8 @@ export const render = (() => {
   })();
   const shipBank = document.querySelector('.shipBank');
   const hideShips = () => {
+    const carrier = document.querySelector('.carrier');
+    carrier.classList.toggle('hidden');
     const battleship = document.querySelector('.battleship');
     battleship.classList.add('hidden');
     const cruiser = document.querySelector('.cruiser');
@@ -44,7 +45,7 @@ export const render = (() => {
     submarine.classList.add('hidden');
     const destroyer = document.querySelector('.destroyer');
     destroyer.classList.add('hidden');
-    shipBank.classList.toggle('hidden');
+    //  shipBank.classList.toggle('hidden');
   };
   hideShips();
 
@@ -91,9 +92,9 @@ export const render = (() => {
     zone.classList.add('hit');
     clearTimeouts();
     if (zone.id <= 99) {
-      message.textContent = 'The enemy sunk your ship!';
+      message.textContent = 'The enemy sank your ship!';
     } else {
-      message.textContent = "You sunk the enemy's ship!";
+      message.textContent = "You sank the enemy's ship!";
     }
   };
   const shipPlacementComplete = () => {
@@ -105,7 +106,7 @@ export const render = (() => {
     timeouts = [];
     timeouts.push(
       setTimeout(() => {
-        message.textContent = "...but you're starting the battle.";
+        message.textContent = '...but you need to end it.';
       }, 2000)
     );
     timeouts.push(

@@ -19,7 +19,7 @@
     <div id="container" class="container">
         <h1 class="title">BATTLESHIP</h1>
         <div class="gameBoards">
-            <p class="playerMessage" id="player1Message"></p>
+            <p class="playerMessage introMessage" id="player1Message">The enemy is preparing their attack!</p>
             <div id="gameboard1" class="gameboard1">
                 <div id="0" class="zone"></div>
                 <div id="1" class="zone"></div>
@@ -123,34 +123,34 @@
                 <div id="99" class="zone"></div>
             </div>
             <p class="player1Label">Your fleet</p>
-            <div class="shipBank hidden">
+            <div class="shipBank">
                 <button id="rotateShip" class="rotateShip">
                     Rotate Ship
                 </button>
-                <div class="carrier draggableShip vertical" draggable="true">
+                <div class="carrier draggableShip vertical hidden" draggable="true">
                     <div class="shipBlock vertical"></div>
                     <div class="shipBlock vertical"></div>
                     <div class="shipBlock vertical"></div>
                     <div class="shipBlock vertical"></div>
                     <div class="shipBlock vertical"></div>
                 </div>
-                <div class="battleship draggableShip vertical" draggable="true">
+                <div class="battleship draggableShip vertical hidden" draggable="true">
                     <div class="shipBlock vertical"></div>
                     <div class="shipBlock vertical"></div>
                     <div class="shipBlock vertical"></div>
                     <div class="shipBlock vertical"></div>
                 </div>
-                <div class="cruiser draggableShip vertical" draggable="true">
+                <div class="cruiser draggableShip vertical hidden" draggable="true">
                     <div class="shipBlock vertical"></div>
                     <div class="shipBlock vertical"></div>
                     <div class="shipBlock vertical"></div>
                 </div>
-                <div class="submarine draggableShip vertical" draggable="true">
+                <div class="submarine draggableShip vertical hidden" draggable="true">
                     <div class="shipBlock vertical"></div>
                     <div class="shipBlock vertical"></div>
                     <div class="shipBlock vertical"></div>
                 </div>
-                <div class="destroyer draggableShip vertical" draggable="true">
+                <div class="destroyer draggableShip vertical hidden" draggable="true">
                     <div class="shipBlock vertical"></div>
                     <div class="shipBlock vertical"></div>
                 </div>

@@ -1,13 +1,8 @@
 import { game } from '../index.js';
-import { render } from './render.js';
 import { dragAndDrop } from './dragAndDrop.js';
+import { render } from './render.js';
 
 export const events = () => {
-  const zones = document.querySelectorAll('.zone');
-  const attack = (e) => {
-    game.playRound(e.target.id);
-  };
-  zones.forEach((element) => element.addEventListener('click', attack));
   const startUpDragAndDrop = () => {
     const board = document.querySelector('.gameboard1');
     board.addEventListener('drop', dragAndDrop.dropCarrier, { once: true });
@@ -29,11 +24,18 @@ export const events = () => {
         element.classList.remove('dragging');
       });
     });
+    const receiveAttack = (e) => {
+      game.playRound(e.target.id);
+    };
+    const zones = document.querySelectorAll('.zone');
+    zones.forEach((element) =>
+      element.addEventListener('click', receiveAttack)
+    );
   };
   startUpDragAndDrop();
+
   const rotateBtn = document.getElementById('rotateShip');
   rotateBtn.addEventListener('click', () => {
-    // do this for other ships
     const ships = document.querySelectorAll('.draggableShip');
     ships.forEach((ship) => {
       ship.classList.toggle('vertical');
@@ -45,10 +47,20 @@ export const events = () => {
       });
     });
   });
-  const shipPlacementComplete = () => {
-    // hide bank and ship button
-    // clear intro messages
-    render.clearMessage();
+};
+
+export const nextShipToPlace = (prevShip, nextShip) => {
+  const board = document.querySelector('.gameboard1');
+  const newShip = document.querySelector(`.${nextShip}`);
+  newShip.addEventListener('mousedown', dragAndDrop.shipPartIdentifier);
+  newShip.addEventListener('mousedown', dragAndDrop.shipOrientation);
+  const functions = {
+    carrier: dragAndDrop.dropCarrier,
+    battleship: dragAndDrop.dropBattleship,
+    cruiser: dragAndDrop.dropCruiser,
+    submarine: dragAndDrop.dropCruiser,
+    destroyer: dragAndDrop.dropDestroyer,
   };
-  return { shipPlacementComplete };
+  board.addEventListener('drop', functions[nextShip], { once: true });
+  render.showNextShip(prevShip, nextShip);
 };

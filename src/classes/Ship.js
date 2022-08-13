@@ -9,7 +9,7 @@ export class Ship {
     this.hits.push(zone);
     if (this.hits.length === this.length) {
       this.sunk = true;
-      console.log('Ship sunk!');
+      return true;
     }
   }
 }

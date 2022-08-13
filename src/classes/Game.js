@@ -1,6 +1,7 @@
 import { ComputerPlayer, HumanPlayer } from './Player.js';
 import { Gameboard } from './Gameboard.js';
 import { render } from '../dom/render.js';
+import { events } from '../dom/events.js';
 
 export class Game {
   constructor(player1 = 'Player', player2 = 'Computer') {
@@ -10,7 +11,7 @@ export class Game {
     this.gameboard2 = new Gameboard();
     this.gameOver = true;
     this.winner = '';
-    this.turn = 0;
+    this.turn = 1;
   }
   setUpGame() {
     //set up
@@ -19,22 +20,21 @@ export class Game {
     this.player1.enemy = this.player2;
     this.player2.enemy = this.player1;
     this.player2.placeShips(this.gameboard2);
-    const logShips = () => {
+    events();
+
+    const logCompShips = () => {
       for (const ship of this.gameboard2.ships) {
         console.log(ship.zones);
       }
     };
-    logShips();
-
-    //this.gameOver = false;
+    logCompShips();
   }
   setUpComplete() {
     render.shipPlacementComplete();
     this.gameOver = false;
-    this.player1.turn = true;
   }
   playRound(zone) {
-    if (!this.gameOver) {
+    if (!this.gameOver && this.turn === 1) {
       this.player1.attack(zone);
       if (this.gameboard2.allSunk()) {
         this.winner = this.player1;
@@ -51,7 +51,12 @@ export class Game {
           return;
         }
       };
-      setTimeout(compAttack, 500);
+      this.turn = 2;
+      const switchTurn = () => {
+        this.turn = 1;
+      };
+      setTimeout(compAttack, 2200);
+      setTimeout(switchTurn, 2200);
     }
   }
 }

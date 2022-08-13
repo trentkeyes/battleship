@@ -1,3 +1,4 @@
+import { nextShipToPlace } from '../dom/events.js';
 import { render } from '../dom/render.js';
 import { Ship } from './Ship.js';
 
@@ -31,7 +32,7 @@ export class Gameboard {
 
     this.shipToPlaceIndex++;
     if (this.shipToPlaceIndex <= 4) {
-      render.nextShipToPlace(
+      nextShipToPlace(
         this.shipToPlace[this.shipToPlaceIndex - 1],
         this.shipToPlace[this.shipToPlaceIndex]
       );
@@ -74,8 +75,12 @@ export class Gameboard {
     for (const ship of this.ships) {
       const onTarget = ship.zones.filter((zone) => zone === target);
       if (onTarget.length === 1) {
-        ship.hitShip(target);
-        render.renderHit(target);
+        const sunk = ship.hitShip(target);
+        if (sunk) {
+          render.renderSunk(target);
+        } else {
+          render.renderHit(target);
+        }
         return true;
       }
     }

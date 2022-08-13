@@ -191,7 +191,7 @@ h1 {
     justify-content: space-between;
     align-items: center;
     flex-basis: 0;
-    padding: 5px 20px;
+    padding: 2px 20px;
     width: 100%;
     background-color: rgba(220, 220, 220, 0.537);
 }

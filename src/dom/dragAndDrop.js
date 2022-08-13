@@ -50,6 +50,13 @@ export const dragAndDrop = (() => {
       const zoneAfter4 = document.getElementById(`${Number(e.target.id) + 4}`);
       if (orientation === 'vertical') {
         if (shipPart === 0) {
+          const zones = [
+            e.target,
+            zoneBelow1,
+            zoneBelow2,
+            zoneBelow3,
+            zoneBelow4,
+          ];
           if (
             !e.target.classList.contains('ship') &&
             !zoneBelow1.classList.contains('ship') &&

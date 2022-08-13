@@ -12,9 +12,8 @@ export const events = () => {
     });
     carrier.addEventListener('mousedown', dragAndDrop.shipOrientation);
     carrier.addEventListener('mousedown', dragAndDrop.getOrientation);
-    document.addEventListener('dragover', (event) => {
-      event.preventDefault();
-    });
+    document.addEventListener('dragover', (e) => e.preventDefault());
+
     const draggableShip = document.querySelectorAll('.draggableShip');
     draggableShip.forEach((element) => {
       element.addEventListener('dragstart', (e) => {
@@ -61,6 +60,9 @@ export const nextShipToPlace = (prevShip, nextShip) => {
     submarine: dragAndDrop.dropCruiser,
     destroyer: dragAndDrop.dropDestroyer,
   };
-  board.addEventListener('drop', functions[nextShip], { once: true });
+  const boardDropEvent = () => {
+    board.addEventListener('drop', functions[nextShip], { once: true });
+  };
+  newShip.addEventListener('mousedown', boardDropEvent);
   render.showNextShip(prevShip, nextShip);
 };

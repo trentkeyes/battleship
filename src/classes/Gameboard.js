@@ -36,6 +36,7 @@ export class Gameboard {
         this.shipToPlace[this.shipToPlaceIndex - 1],
         this.shipToPlace[this.shipToPlaceIndex]
       );
+      
     }
     if (this.shipToPlaceIndex === 5) {
       render.lastShipPlaced();

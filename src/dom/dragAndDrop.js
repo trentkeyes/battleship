@@ -1,5 +1,4 @@
 import { game } from '../index.js';
-import {} from '../index.js';
 
 let shipPart;
 const getShipPart = () => shipPart;
@@ -25,22 +24,22 @@ export const dragAndDrop = (() => {
     console.log('drop fired');
     const zoneIDs = [];
     for (const zone of zones) {
-      zoneIDs.push(zone.id);
+      zoneIDs.push(Number(zone.id));
     }
     return (
       // ship can't intersect with another ship
       zones.every((element) => !element.classList.contains('ship')) &&
       zoneIDs.every((element) => element < 100) &&
       // ship can't be placed from eg zone 9 on the right edge to zone 10 on the left
-      !zoneIDs.includes(109 && 110) &&
-      !zoneIDs.includes(119 && 120) &&
-      !zoneIDs.includes(129 && 130) &&
-      !zoneIDs.includes(139 && 140) &&
-      !zoneIDs.includes(149 && 150) &&
-      !zoneIDs.includes(159 && 160) &&
-      !zoneIDs.includes(169 && 170) &&
-      !zoneIDs.includes(179 && 180) &&
-      !zoneIDs.includes(189 && 190)
+      !zoneIDs.includes(9 && 10) &&
+      !zoneIDs.includes(19 && 20) &&
+      !zoneIDs.includes(29 && 30) &&
+      !zoneIDs.includes(39 && 40) &&
+      !zoneIDs.includes(49 && 50) &&
+      !zoneIDs.includes(59 && 60) &&
+      !zoneIDs.includes(69 && 70) &&
+      !zoneIDs.includes(79 && 80) &&
+      !zoneIDs.includes(89 && 90)
     );
   };
   const dropCarrier = (e) => {

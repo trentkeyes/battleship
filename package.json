@@ -13,6 +13,10 @@
   "bugs": {
     "url": "https://github.com/trentkeyes/battleship/issues"
   },
-  "homepage": "https://github.com/trentkeyes/battleship#readme"
-
+  "homepage": "https://github.com/trentkeyes/battleship#readme",
+  "devDependencies": {
+    "css-loader": "^6.7.1",
+    "webpack": "^5.74.0",
+    "webpack-cli": "^4.10.0"
+  }
 }

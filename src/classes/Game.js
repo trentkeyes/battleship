@@ -14,7 +14,6 @@ export class Game {
     this.turn = 1;
   }
   setUpGame() {
-    //set up
     this.player1.gameboard = this.gameboard1;
     this.player2.gameboard = this.gameboard2;
     this.player1.enemy = this.player2;
@@ -24,7 +23,7 @@ export class Game {
 
     const logCompShips = () => {
       for (const ship of this.gameboard2.ships) {
-        console.log(ship.zones);
+        console.log('Computer Ship:', ship.zones);
       }
     };
     logCompShips();
@@ -55,8 +54,8 @@ export class Game {
       const switchTurn = () => {
         this.turn = 1;
       };
-      setTimeout(compAttack, 2200);
-      setTimeout(switchTurn, 2200);
+      setTimeout(compAttack, 2000);
+      setTimeout(switchTurn, 2000);
     }
   }
 }

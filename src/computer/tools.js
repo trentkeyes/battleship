@@ -110,13 +110,13 @@ export const placeShipsRandomly = (board) => {
   const getRandomInt = (min, max) => {
     min = Math.ceil(min);
     max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min) + min);
+    return Math.floor(Math.random() * (max - min + 1) + min);
   };
   const buildShip = (size) => {
     const generateZones = (size) => {
       let zones = [];
-      const orientation = getRandomInt(0, 2);
-      let startingVal = getRandomInt(100, 200);
+      const orientation = getRandomInt(0, 1);
+      let startingVal = getRandomInt(100, 199);
       zones.push(startingVal);
       let i = 1;
       while (i < size) {

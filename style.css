@@ -51,6 +51,8 @@ h1 {
     align-items: center;
     justify-content: flex-start;
     gap: 10px;
+    width: 200px;
+    transition: 2s ease-in-out;
 }
 
 .gameBoards {
@@ -59,13 +61,17 @@ h1 {
         "message message message"
         "player1 shipBank player2"
         "player1Label . player2Label";
-    grid-template-columns: auto 200px auto;
+    grid-template-columns: auto auto auto;
     justify-items: center;
     column-gap: 1rem;
     background-color: rgba(220, 220, 220, 0.537);
     border-radius: 5px;
     box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
     padding: 0px 20px;
+}
+
+.shipBank.shrink {
+    width: 20px;
 }
 
 .player1 {
@@ -148,7 +154,6 @@ h1 {
 
 .miss {
     background-color: rgb(146, 146, 146);
-    ;
 }
 
 .draggableShip {
@@ -166,10 +171,12 @@ h1 {
 
 .vertical {
     flex-direction: column;
+    transition: 1s ease-in-out;
 }
 
 .horizontal {
     flex-direction: row;
+    transition: 1s ease-in-out;
 }
 
 .dragging {

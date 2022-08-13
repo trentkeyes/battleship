@@ -7,6 +7,11 @@ export const events = () => {
     const board = document.querySelector('.gameboard1');
     board.addEventListener('drop', dragAndDrop.dropCarrier, { once: true });
     const carrier = document.querySelector('.carrier');
+    const boardDropEvent = () => {
+      board.addEventListener('drop', dragAndDrop.dropCarrier, { once: true });
+    };
+    carrier.addEventListener('mousedown', boardDropEvent);
+
     carrier.addEventListener('mousedown', dragAndDrop.shipPartIdentifier, {
       once: true,
     });
@@ -23,10 +28,12 @@ export const events = () => {
         element.classList.remove('dragging');
       });
     });
+
     const receiveAttack = (e) => {
       game.playRound(e.target.id);
     };
     const zones = document.querySelectorAll('.zone');
+
     zones.forEach((element) =>
       element.addEventListener('click', receiveAttack)
     );

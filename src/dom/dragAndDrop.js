@@ -21,25 +21,25 @@ export const dragAndDrop = (() => {
     setOrientation(orientation);
   };
   const valid = (zones) => {
-    console.log('drop fired');
     const zoneIDs = [];
     for (const zone of zones) {
       zoneIDs.push(Number(zone.id));
     }
+
     return (
       // ship can't intersect with another ship
       zones.every((element) => !element.classList.contains('ship')) &&
       zoneIDs.every((element) => element < 100) &&
       // ship can't be placed from eg zone 9 on the right edge to zone 10 on the left
-      !zoneIDs.includes(9 && 10) &&
-      !zoneIDs.includes(19 && 20) &&
-      !zoneIDs.includes(29 && 30) &&
-      !zoneIDs.includes(39 && 40) &&
-      !zoneIDs.includes(49 && 50) &&
-      !zoneIDs.includes(59 && 60) &&
-      !zoneIDs.includes(69 && 70) &&
-      !zoneIDs.includes(79 && 80) &&
-      !zoneIDs.includes(89 && 90)
+      !(zoneIDs.includes(9) && zoneIDs.includes(10)) &&
+      !(zoneIDs.includes(19) && zoneIDs.includes(20)) &&
+      !(zoneIDs.includes(29) && zoneIDs.includes(30)) &&
+      !(zoneIDs.includes(39) && zoneIDs.includes(40)) &&
+      !(zoneIDs.includes(49) && zoneIDs.includes(50)) &&
+      !(zoneIDs.includes(59) && zoneIDs.includes(60)) &&
+      !(zoneIDs.includes(69) && zoneIDs.includes(70)) &&
+      !(zoneIDs.includes(79) && zoneIDs.includes(80)) &&
+      !(zoneIDs.includes(89) && zoneIDs.includes(90))
     );
   };
   const dropCarrier = (e) => {
@@ -508,7 +508,6 @@ export const dragAndDrop = (() => {
         }
       }
     }
-
   };
   return {
     shipPartIdentifier,

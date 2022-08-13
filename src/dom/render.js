@@ -101,6 +101,8 @@ export const render = (() => {
     message.textContent = '';
     const rotateBtn = document.getElementById('rotateShip');
     rotateBtn.classList.toggle('hidden');
+    const shipBank = document.querySelector('.shipBank');
+    shipBank.classList.add('shrink');
 
     message.textContent = "You didn't start this war...";
     timeouts = [];

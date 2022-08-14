@@ -37,8 +37,15 @@ export const events = () => {
     zones.forEach((element) =>
       element.addEventListener('click', receiveAttack)
     );
+    const reset = () => {
+      render.resetGame();
+      game.resetGame();
+    };
+    const resetBtn = document.querySelector('#reset');
+    resetBtn.addEventListener('click', reset);
   };
   startUpDragAndDrop();
+  render.introMessage();
 
   const rotateBtn = document.getElementById('rotateShip');
   rotateBtn.addEventListener('click', () => {

@@ -140,7 +140,7 @@ export const placeShipsRandomly = (board) => {
       if (
         // check if generated ship doesnt intersect with other ships or go outside border
         zones.every((zone) => !placedShipZones.includes(zone)) &&
-        zones.every((zone) => zone <= 200) &&
+        zones.every((zone) => zone < 200) &&
         // ships don't wrap from the right edge to the left
         !zones.includes(109 && 110) &&
         !zones.includes(119 && 120) &&

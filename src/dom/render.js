@@ -9,7 +9,7 @@ export const render = (() => {
       clearTimeout(timeouts[i]);
     }
   };
-  const introMessage = (() => {
+  const introMessage = () => {
     message.classList.add('introMessage');
     timeouts = [];
     timeouts.push(
@@ -32,7 +32,7 @@ export const render = (() => {
         message.textContent = 'To begin, place your carrier.';
       }, 7500)
     );
-  })();
+  };
   const shipBank = document.querySelector('.shipBank');
   const hideShips = () => {
     const carrier = document.querySelector('.carrier');
@@ -45,7 +45,6 @@ export const render = (() => {
     submarine.classList.add('hidden');
     const destroyer = document.querySelector('.destroyer');
     destroyer.classList.add('hidden');
-    //  shipBank.classList.toggle('hidden');
   };
   hideShips();
 
@@ -116,6 +115,8 @@ export const render = (() => {
         message.textContent = 'Take a shot at the enemy!';
       }, 4000)
     );
+    const zones = document.querySelectorAll('.zone');
+    zones.forEach((element) => element.classList.add('gameOn'));
   };
   const player1Win = () => {
     message.classList.add('introMessage');
@@ -125,7 +126,25 @@ export const render = (() => {
     message.classList.add('introMessage');
     message.textContent = "You lost. We're doomed.";
   };
+  const resetGame = () => {
+    const zones = document.querySelectorAll('.zone');
+    zones.forEach((element) => {
+      if (element.classList.contains('ship')) {
+        element.classList.remove('ship');
+      }
+      if (element.classList.contains('hit')) {
+        element.classList.remove('hit');
+      }
+      if (element.classList.contains('miss')) {
+        element.classList.remove('miss');
+      }
+    });
+    message.textContent = 'The enemy is preparing their attack!';
+    introMessage();
+    location.reload();
+  };
   return {
+    introMessage,
     renderShip,
     renderHit,
     renderMiss,
@@ -135,5 +154,6 @@ export const render = (() => {
     shipPlacementComplete,
     player1Win,
     player2Win,
+    resetGame,
   };
 })();

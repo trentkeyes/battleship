@@ -4,9 +4,9 @@ import { render } from '../dom/render.js';
 import { events } from '../dom/events.js';
 
 export class Game {
-  constructor(player1 = 'Player', player2 = 'Computer') {
-    this.player1 = new HumanPlayer(player1);
-    this.player2 = new ComputerPlayer(player2);
+  constructor() {
+    this.player1 = new HumanPlayer();
+    this.player2 = new ComputerPlayer();
     this.gameboard1 = new Gameboard();
     this.gameboard2 = new Gameboard();
     this.gameOver = true;
@@ -20,13 +20,6 @@ export class Game {
     this.player2.enemy = this.player1;
     this.player2.placeShips(this.gameboard2);
     events();
-
-    const logCompShips = () => {
-      for (const ship of this.gameboard2.ships) {
-        console.log('Computer Ship:', ship.zones);
-      }
-    };
-    logCompShips();
   }
   setUpComplete() {
     render.shipPlacementComplete();
@@ -57,5 +50,15 @@ export class Game {
       setTimeout(compAttack, 2000);
       setTimeout(switchTurn, 2000);
     }
+  }
+  resetGame() {
+    this.player1 = new HumanPlayer();
+    this.player2 = new ComputerPlayer();
+    this.gameboard1 = new Gameboard();
+    this.gameboard2 = new Gameboard();
+    this.gameOver = true;
+    this.winner = '';
+    this.turn = 1;
+    this.setUpGame();
   }
 }

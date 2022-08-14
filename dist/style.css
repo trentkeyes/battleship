@@ -70,7 +70,7 @@ h1 {
     grid-template-areas:
         "message message message"
         "player1 shipBank player2"
-        "player1Label . player2Label";
+        "player1Label reset player2Label";
     grid-template-columns: auto auto auto;
     justify-items: center;
     column-gap: 1rem;
@@ -117,6 +117,13 @@ h1 {
     padding: 10px;
 }
 
+.resetBtn {
+    grid-area: reset;
+    font-family: inherit;
+    margin-bottom: 5px;
+    padding: 0px 8px;
+}
+
 .gameboard1,
 .gameboard2 {
     display: flex;
@@ -134,7 +141,7 @@ h1 {
     border: .5px solid var(--zone-border)
 }
 
-.gameboard2>.zone:hover {
+.gameboard2>.zone.gameOn:hover {
     background-color: var(--zone-hover);
     cursor: crosshair;
 }
